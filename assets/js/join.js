@@ -380,7 +380,7 @@
      never broken while the form is still being built.
      ========================================================= */
   const APPLICATION = {
-    url: '',                 // e.g. 'https://docs.google.com/forms/d/e/FORM_ID/viewform'
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdWPb6xAHQoc6pOwLVTI4s4hCGSLjjYbiHmi5934D_lQjjVCQ/viewform',
     committeeEntry: ''       // e.g. 'entry.1234567890'
   };
 

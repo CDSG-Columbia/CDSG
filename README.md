@@ -40,10 +40,14 @@ committee matcher feeds its suggestion straight into the form as a pre-filled fi
 
 ```js
 const APPLICATION = {
-  url: 'https://docs.google.com/forms/d/e/FORM_ID/viewform',
-  committeeEntry: 'entry.1234567890'
+  url: 'https://docs.google.com/forms/d/e/1FAIpQLSdWPb.../viewform',  // SET
+  committeeEntry: ''                                                   // STILL NEEDED
 };
 ```
+
+`url` is set. `committeeEntry` is still empty, so the button opens the form without
+pre-selecting a committee. Once the form has a committee question, use
+**⋮ → Get pre-filled link** and paste the `entry.NNNNN` number in.
 
 Get `committeeEntry` from the form: **⋮ → Get pre-filled link**, choose any committee, submit,
 and read the `entry.NNNNN` number out of the URL Google gives you.
