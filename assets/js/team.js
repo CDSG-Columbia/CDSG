@@ -3,9 +3,9 @@
 
    Three states per seat:
 
-     open: true                     -> "Recruiting", mint flag, apply button
-     open: false, name: null        -> "Filled", grey flag, no apply button
-     open: false, name: 'Real Name' -> the person, plus year / major / bio
+     open: true                      -> "Recruiting", mint flag, apply button
+     open: false, name: null         -> "Filled", grey flag, no apply button
+     open: false, name: 'Real Name'  -> the person, plus year / major / bio
 
    So a filled seat can go up before you decide to publish a name.
    To publish one, add:
@@ -25,9 +25,29 @@
    `div` doubles as the filter chip on the page, and maps onto the four
    member tracks (plus Leadership and Operations, which sit above them).
    ========================================================= */
+/* =========================================================
+   FOUNDING PARTNERS
+
+   Separate from the board on purpose. "Founding Partner" is a
+   permanent designation and is never re-elected; the six board
+   seats below rotate and are filled on merit. A founder can of
+   course also hold a board seat.
+
+   Add a name and it replaces the placeholder automatically:
+
+       { name: 'Real Name', year: 'CC \u201927', major: 'Economics' }
+
+   Add a `bio` too and the card becomes clickable.
+   ========================================================= */
+const FOUNDERS = [
+  { name: null, year: null, major: null, bio: null },
+  { name: null, year: null, major: null, bio: null },
+  { name: null, year: null, major: null, bio: null }
+];
+
 const BOARD = [
   {
-    role: 'President', div: 'Leadership', open: false,
+    role: 'President', div: 'Leadership', open: true,
     name: null, year: null, major: null, bio: null,
     owns: 'Sets the agenda, holds final say on which engagements we take, and runs the weekly scoping review.',
     skills: ['Client Strategy', 'Scoping', 'SQL', 'Financial Modeling'],
@@ -55,7 +75,7 @@ const BOARD = [
     radar: [92, 95, 48, 28, 44]
   },
   {
-    role: 'Director of Marketing', div: 'Marketing', open: false,
+    role: 'Director of Marketing', div: 'Marketing', open: true,
     name: null, year: null, major: null, bio: null,
     owns: 'Campus and city presence, analyst recruitment, and networking events.',
     skills: ['Brand & Social', 'Recruitment', 'Events', 'Copywriting'],
@@ -202,6 +222,39 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
   const counter = $('#seat-count');
   if (counter) counter.innerHTML =
     `<span class="pill">${openCount} of ${BOARD.length} seats open</span>`;
+
+  /* ---------------- Founding partners ---------------- */
+  const fwrap = $('#founders');
+  if (fwrap) {
+    fwrap.innerHTML = FOUNDERS.map((f, i) => `
+      <div class="founder${f.bio ? ' has-bio' : ''}" data-f="${i}" data-reveal data-dir="scale" data-delay="${i * .07}">
+        <div class="f-av">${initials(f.name) || String(i + 1).padStart(2, '0')}</div>
+        <div>
+          <div class="f-lbl">Founding Partner</div>
+          <h4>${f.name || 'Name to be published'}</h4>
+          <div class="f-sub">${f.name ? [f.year, f.major].filter(Boolean).join(' \u00b7 ') : 'Founded the group, 2026'}</div>
+        </div>
+      </div>`).join('');
+
+    $$('.founder', fwrap).forEach((el, i) => {
+      new IntersectionObserver((en, ob) => {
+        if (en[0].isIntersecting) { setTimeout(() => el.classList.add('in'), i * 80); ob.disconnect(); }
+      }, { threshold: .2 }).observe(el);
+
+      if (!FOUNDERS[i].bio) return;
+      el.addEventListener('click', () => {
+        const f = FOUNDERS[i];
+        body.innerHTML = `
+          <div class="d-avatar">${initials(f.name) || String(i + 1).padStart(2, '0')}</div>
+          <div class="mono faint" style="font-size:10px;letter-spacing:.2em">FOUNDING PARTNER</div>
+          <h2 style="margin-top:6px">${f.name || 'Name to be published'}</h2>
+          <div class="d-role">${[f.year, f.major].filter(Boolean).join(' \u00b7 ') || 'Founded the group, 2026'}</div>
+          <p class="d-bio">${f.bio}</p>`;
+        drawer.classList.add('open'); scrim.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+  }
 
   /* ---------------- Grid ---------------- */
   const grid = $('#team-grid');

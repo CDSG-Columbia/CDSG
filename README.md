@@ -88,7 +88,17 @@ application.
 | **Marketing** | Growth on campus and off: brand, analyst recruitment, networking events. |
 | **Software Engineering** | What we ship — this website, internal tooling, client-facing builds. |
 
-The eight board seats in `assets/js/team.js` map onto those tracks:
+### Founding partners vs. board seats
+
+Two separate things, deliberately:
+
+* **`FOUNDERS`** in `team.js` — three people, permanent designation, never re-elected.
+  Renders as a violet strip above the board. Add a `name` to replace the placeholder;
+  add a `bio` too and the card becomes clickable.
+* **`BOARD`** in `team.js` — six seats, all currently open, filled on merit and rotating.
+  A founder can also hold a seat; the seat just isn't automatically theirs.
+
+The six board seats map onto the tracks:
 
 | Seat | Division |
 | --- | --- |
