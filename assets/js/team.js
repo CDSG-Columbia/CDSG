@@ -1,5 +1,5 @@
 /* =========================================================
-   Executive Board — founding stage
+   Executive Board, founding stage
 
    Three states per seat:
 
@@ -16,7 +16,7 @@
        bio:   'One or two sentences about them.'
 
    Leave `role`, `div`, `owns`, `skills` and `radar` alone unless
-   the seat itself changes — those describe the SEAT, not the person,
+   the seat itself changes, those describe the SEAT, not the person,
    which is why they can be truthful before anyone fills it.
 
    radar axes (0–100) = the competency mix this seat is staffed for:
@@ -49,42 +49,42 @@ const BOARD = [
   {
     role: 'President', div: 'Leadership', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Sets the agenda, holds final say on which engagements we take, and runs the weekly scoping review.',
+    owns: 'Chairs the weekly scoping review, signs off which clients we take, and settles scope disputes. Owns the relationship with the student governing board and the group’s budget request.',
     skills: ['Client Strategy', 'Scoping', 'SQL', 'Financial Modeling'],
     radar: [45, 72, 95, 66, 92]
   },
   {
     role: 'Vice President', div: 'Leadership', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Runs staffing, timelines, and the quality bar across every project committee.',
+    owns: 'Assigns analysts to committees, holds the two-week checkpoint calendar, and reads every deliverable before a client does. Steps in when a committee falls behind.',
     skills: ['Staffing', 'Process Design', 'Project Management', 'Python'],
     radar: [60, 74, 86, 62, 74]
   },
   {
     role: 'Director of Strategy & Client', div: 'Strategy & Client', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Sources the deals. Runs intake and market research, and stays the client’s single point of contact.',
+    owns: 'Builds the outreach list, sends the cold emails, runs the intake call, and writes the scoping document. Owns the market research and is the client’s only point of contact for twelve weeks.',
     skills: ['Client Sourcing', 'Pitching', 'Market Research', 'Scoping'],
     radar: [30, 58, 96, 72, 98]
   },
   {
     role: 'Director of Data Engineering & Analytics', div: 'Data Engineering & Analytics', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Owns the work end to end — cleaning, pipeline, analysis, recommendation. Staffs every project committee.',
+    owns: 'Owns the warehouse schema and the cleaning templates, writes the analysis plan for each engagement, reviews every model, and signs off the numbers before they leave the room.',
     skills: ['Python', 'SQL', 'Forecasting', 'Causal Inference'],
     radar: [92, 95, 48, 28, 44]
   },
   {
     role: 'Director of Marketing', div: 'Marketing', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Campus and city presence, analyst recruitment, and networking events.',
+    owns: 'Runs the activities fair table and the application funnel, writes the social and email copy, and produces the networking events. Owns how many people apply.',
     skills: ['Brand & Social', 'Recruitment', 'Events', 'Copywriting'],
     radar: [26, 46, 62, 97, 80]
   },
   {
     role: 'Director of Software Engineering', div: 'Software Engineering', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'This website, internal tooling, and anything client-facing a committee needs built.',
+    owns: 'Maintains this site, the intake and application tooling, and the shared repo. Sets code review standards and unblocks committees that need something built.',
     skills: ['JavaScript', 'Git & Deployment', 'APIs', 'UI Design'],
     radar: [93, 56, 40, 48, 36]
   }
@@ -135,7 +135,7 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
       const [x, y] = pt(i, R * (v / 100));
       return `<circle cx="${x}" cy="${y}" r="3" fill="rgb(${color})"/>`;
     }).join('');
-    // Pad the viewBox so the axis labels sit inside the box — parent cards
+    // Pad the viewBox so the axis labels sit inside the box, parent cards
     // use overflow:hidden and would otherwise clip them.
     const vp = 34;
     return `<svg viewBox="${-vp} ${-vp} ${size + vp * 2} ${size + vp * 2}"

@@ -1,5 +1,5 @@
 /* =========================================================
-   Projects — founding stage
+   Projects, founding stage
 
    These are HYPOTHETICAL BRIEFS, not past engagements. They
    describe work we could deliver, written in the conditional
@@ -8,7 +8,7 @@
    client names, no results charts.
 
    As real engagements finish, replace this array with actual
-   case studies — and at that point add back the metrics.
+   case studies, and at that point add back the metrics.
    ========================================================= */
 const BRIEFS = [
   {
@@ -17,7 +17,7 @@ const BRIEFS = [
     who: 'A café or bakery whose POS exports nobody has opened in two years',
     question: 'When should we prep, and how much of it?',
     summary: 'Rebuild years of POS exports into an hourly demand curve, then find the prep schedule that stops both the 9am shortfall and the 4pm waste.',
-    problem: 'Prep volume gets set from memory. That usually means over-producing on quiet weekdays and running out mid-morning on busy weekends — and because waste is never logged, nobody can see the cost.',
+    problem: 'Prep volume gets set from memory. That usually means over-producing on quiet weekdays and running out mid-morning on busy weekends, and because waste is never logged, nobody can see the cost.',
     approach: [
       'Consolidate every POS export into one table, reconciling schema changes along the way',
       'Reconstruct hourly demand from timestamped line items',
@@ -53,7 +53,7 @@ const BRIEFS = [
     summary: 'Classify the full catalogue by velocity and margin, surface the capital trapped in slow movers, and set a reorder point for everything that matters.',
     problem: 'Without a velocity view, capital gets tied up in stock that hasn’t moved in a year while the fast movers go out of stock weekly. Both problems are invisible from the floor.',
     approach: [
-      'Clean and deduplicate the catalogue — inconsistent SKU naming is usually the first wall',
+      'Clean and deduplicate the catalogue, inconsistent SKU naming is usually the first wall',
       'Classify items by velocity and margin into an ABC-XYZ matrix',
       'Compute reorder points and safety stock per class',
       'Build a one-page weekly reorder report'
@@ -68,7 +68,7 @@ const BRIEFS = [
     who: 'A community clinic losing clinician hours to empty slots',
     question: 'Which appointments should we call to confirm?',
     summary: 'Rank each upcoming appointment by no-show risk so a front desk with limited time calls the ones that matter.',
-    problem: 'Reminder calls go to everyone, which in practice means to no one. Meanwhile a predictable subset of appointments — long lead times, certain types, certain histories — drives most of the loss.',
+    problem: 'Reminder calls go to everyone, which in practice means to no one. Meanwhile a predictable subset of appointments, long lead times, certain types, certain histories, drives most of the loss.',
     approach: [
       'De-identify and clean the scheduling records before anything else',
       'Engineer features from lead time, appointment type, and prior history',
@@ -119,7 +119,7 @@ const BRIEFS = [
     who: 'A studio or gym discounting to fix retention',
     question: 'When do members actually decide to leave?',
     summary: 'Run cohort survival analysis on check-in data to find the point in a membership where churn is really decided.',
-    problem: 'Price gets blamed because it’s the visible lever, so discounting starts — and retention doesn’t move. The signal is usually in early attendance behaviour, weeks before the cancellation.',
+    problem: 'Price gets blamed because it’s the visible lever, so discounting starts, and retention doesn’t move. The signal is usually in early attendance behaviour, weeks before the cancellation.',
     approach: [
       'Join check-in logs, billing records, and class bookings',
       'Run cohort survival analysis by acquisition channel',
@@ -136,7 +136,7 @@ const BRIEFS = [
     who: 'A shop staffing every open hour the same way',
     question: 'Are we standing around at 2pm and drowning at 11am?',
     summary: 'Measure real foot traffic with cheap hardware, join it to weather and local events, and redistribute the same labor hours to where they convert.',
-    problem: 'Staffing follows habit rather than traffic. Peak hours get overwhelmed while quiet stretches carry three people on the floor — and without a counter there’s no evidence either way.',
+    problem: 'Staffing follows habit rather than traffic. Peak hours get overwhelmed while quiet stretches carry three people on the floor, and without a counter there’s no evidence either way.',
     approach: [
       'Install and validate a low-cost door counter',
       'Join traffic counts with weather and local event calendars',
@@ -204,7 +204,7 @@ const BRIEFS = [
       </div>
     </article>`).join('');
 
-  /* A neutral flowing-pipeline ornament. Deliberately NOT a results chart —
+  /* A neutral flowing-pipeline ornament. Deliberately NOT a results chart ,
      an upward trend line here would read as an outcome we haven't earned. */
   function flowViz(cv, seed) {
     const dots = Array.from({ length: 14 }, (_, i) => ({
@@ -270,7 +270,7 @@ const BRIEFS = [
     mbody.innerHTML = `
       <div class="flex gap-m" style="align-items:center;flex-wrap:wrap">
         <span style="color:var(--mint);font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase">${p.sector}</span>
-        <span class="illus">Illustrative brief — not a past engagement</span>
+        <span class="illus">Illustrative brief, not a past engagement</span>
       </div>
       <h2 style="margin:14px 0 10px">${p.title}</h2>
       <p class="muted" style="font-size:.95rem">${p.who}</p>
@@ -300,7 +300,7 @@ const BRIEFS = [
       <div class="chips">${p.tools.map(t => `<span class="chip">${t}</span>`).join('')}</div>
 
       <div class="mt-m flex gap-s wrapf">
-        <a class="btn btn-sm btn-primary" href="join.html#business">This is my problem — get in touch <span class="arrow">→</span></a>
+        <a class="btn btn-sm btn-primary" href="join.html#business">This is my problem, get in touch <span class="arrow">→</span></a>
       </div>
     `;
     mscrim.classList.add('open');
@@ -311,7 +311,7 @@ const BRIEFS = [
   mscrim.addEventListener('click', e => { if (e.target === mscrim) closeModal(); });
 
   /* =========================================================
-     HEX CARTOGRAM — every cell unclaimed
+     HEX CARTOGRAM, every cell unclaimed
      Cell coordinates are [col, row] on an odd-row offset grid,
      laid out to loosely echo the geography of the five boroughs.
      ========================================================= */
@@ -378,7 +378,7 @@ const BRIEFS = [
       cells.forEach(c => {
         const on = hovered === c.b;
         const col = BCOLOR[c.b];
-        // a slow wave sweeping the city — "everything here is available"
+        // a slow wave sweeping the city, "everything here is available"
         const wave = .5 + .5 * Math.sin(t / 30 - (c.x + c.y * .6) / 46);
         const a = on ? .34 : .07 + wave * .13;
         hex(ctx, c.x, c.y, size * .92);
@@ -423,7 +423,7 @@ const BRIEFS = [
       mouse.x = mouse.y = -999; tip.style.opacity = '0';
     });
     carto.addEventListener('click', e => {
-      // read straight off the event — don't assume a mousemove landed first
+      // read straight off the event, don't assume a mousemove landed first
       const r = carto.getBoundingClientRect();
       const mx = e.clientX - r.left, my = e.clientY - r.top;
       const hit = cells.find(c => Math.hypot(c.x - mx, c.y - my) < size * 1.2);

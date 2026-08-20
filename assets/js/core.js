@@ -1,5 +1,5 @@
 /* =========================================================
-   CDSG — core interactions
+   CDSG, core interactions
    Shared across all pages. Vanilla JS, no dependencies.
    ========================================================= */
 (() => {
@@ -14,7 +14,7 @@
 
   /* ---------------- Palette ---------------- */
   const C = {
-    blue:   '56,205,255',    // neon blue — the primary accent everywhere
+    blue:   '56,205,255',    // neon blue, the primary accent everywhere
     deep:   '37,99,255',     // electric blue, for depth in gradients
     pale:   '169,216,242',   // the pale school blue
     mint:   '58,232,200',
@@ -219,7 +219,7 @@
   });
 
   /* =========================================================
-     Canvas helper — retina sizing + rAF lifecycle
+     Canvas helper, retina sizing + rAF lifecycle
      ========================================================= */
   function makeCanvas(cv, draw, opts = {}) {
     const ctx = cv.getContext('2d');
@@ -252,7 +252,7 @@
   window.CDSG_canvas = makeCanvas;
 
   /* =========================================================
-     Node network — hero / CTA background
+     Node network, hero / CTA background
      ========================================================= */
   function nodeNetwork(cv, cfg = {}) {
     const density = cfg.density || 0.000085;
@@ -371,7 +371,7 @@
   window.CDSG_sparkline = sparkline;
 
   /* =========================================================
-     Brand mark — tiny live node cluster in the logo
+     Brand mark, tiny live node cluster in the logo
      ========================================================= */
   $$('.brand-mark canvas').forEach(cv => {
     const nodes = [[.5, .18], [.2, .5], [.8, .46], [.36, .82], [.72, .8]];
@@ -602,7 +602,7 @@
   wireGlyphs();
 
   /* =========================================================
-     Cell strips — a number shown as lit cells instead of prose
+     Cell strips, a number shown as lit cells instead of prose
      <div class="cells" data-cells="12" data-lit="2" [data-sweep]>
      ========================================================= */
   function wireCells(root = document) {

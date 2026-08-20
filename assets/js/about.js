@@ -1,4 +1,4 @@
-/* ============ What We Do — interactive pipeline ============ */
+/* ============ What We Do, interactive pipeline ============ */
 (() => {
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -43,7 +43,7 @@
       if (!W || !H) return;
       const iw = W - PAD * 2, ih = H - PAD * 2;
 
-      if (stage === 0) {                                    // COLLECT — chaos
+      if (stage === 0) {                                    // COLLECT, chaos
         pts.forEach(p => {
           p.tx = PAD + Math.random() * iw;
           p.ty = PAD + Math.random() * ih;
@@ -52,7 +52,7 @@
         });
       }
 
-      else if (stage === 1) {                               // CLEAN — bad records ejected
+      else if (stage === 1) {                               // CLEAN, bad records ejected
         pts.forEach(p => {
           if (p.bad) {                                      // fly out to the edges and fade
             const ang = Math.atan2(p.y - H / 2, p.x - W / 2);
@@ -67,7 +67,7 @@
         });
       }
 
-      else if (stage === 2) {                               // ORGANIZE — grid / table
+      else if (stage === 2) {                               // ORGANIZE, grid / table
         const list = alive();
         const cols = 16;
         const rows = Math.ceil(list.length / cols);
@@ -83,7 +83,7 @@
         pts.filter(p => p.bad).forEach(p => { p.ta = 0; });
       }
 
-      else if (stage === 3) {                               // ANALYZE — scatter + fit
+      else if (stage === 3) {                               // ANALYZE, scatter + fit
         pts.forEach(p => {
           if (p.bad) { p.ta = 0; return; }
           p.tx = PAD + p.u * iw;
@@ -92,7 +92,7 @@
         });
       }
 
-      else {                                                // OPTIMIZE — binned bars
+      else {                                                // OPTIMIZE, binned bars
         const list = alive();
         const bins = 12;
         const groups = Array.from({ length: bins }, () => []);
@@ -286,7 +286,7 @@
       if (prog) prog.style.width = ((s + 1) / 5) * 100 + '%';
     }
 
-    // Auto-tour, but only once the viz is actually on screen — and it stops
+    // Auto-tour, but only once the viz is actually on screen, and it stops
     // the moment someone takes over.
     let auto = null;
     new IntersectionObserver(en => {
@@ -314,7 +314,7 @@
     ['HUDSON SUPPLY CO.', '2024-03-14', '1240', true],
     ['Bleecker Roasters', '14-Mar-2024', '$886.50', false],
     ['bleecker roasters ', 'Mar 14 2024', '886.5', true],
-    ['Amsterdam Paper', '03/15/2024', '—', true],
+    ['Amsterdam Paper', '03/15/2024', ',', true],
     ['Amsterdam Paper Co', '2024-03-15', '$2,015.75', false]
   ];
   const after = [

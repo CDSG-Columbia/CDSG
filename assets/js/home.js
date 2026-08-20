@@ -25,7 +25,7 @@
      Portal card mini-visualizations
      --------------------------------------------------------- */
   const vizzes = {
-    /* 01 — pipeline: packets flowing through five gates */
+    /* 01, pipeline: packets flowing through five gates */
     pipeline(cv) {
       const packets = Array.from({ length: 26 }, (_, i) => ({
         p: i / 26, lane: (i % 3), speed: 0.0025 + Math.random() * 0.0028
@@ -57,7 +57,7 @@
       });
     },
 
-    /* 02 — network: a small org graph that breathes */
+    /* 02, network: a small org graph that breathes */
     network(cv) {
       let nodes = [];
       mk(cv, (ctx, w, h, t) => {
@@ -91,7 +91,7 @@
       });
     },
 
-    /* 03 — bars: a small chart that keeps re-sampling */
+    /* 03, bars: a small chart that keeps re-sampling */
     bars(cv) {
       const n = 22;
       let vals = Array.from({ length: n }, () => Math.random() * .7 + .15);
@@ -114,7 +114,7 @@
       });
     },
 
-    /* 04 — scatter: points settling into a fitted trend */
+    /* 04, scatter: points settling into a fitted trend */
     scatter(cv) {
       let pts = [];
       mk(cv, (ctx, w, h, t) => {

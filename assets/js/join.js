@@ -1,4 +1,4 @@
-/* ============ Get Involved — two paths ============
+/* ============ Get Involved, two paths ============
    Panel A: students  → track matcher + analyst application
    Panel B: businesses → pilot client intake
    Both forms run on the same step engine (wireForm).
@@ -66,22 +66,22 @@
   const TRACKS = [
     { key: 'Strategy & Client',
       blurb: 'Source the deals and own the client relationship.',
-      detail: 'You bring the work in. Find and pitch clients, run intake and market research, get the data out of them, and stay their single point of contact.',
+      detail: 'Build the outreach list, send the cold emails, run the intake call, write the scoping document, and stay the client’s point of contact for twelve weeks.',
       learn: ['Client sourcing', 'Pitching', 'Market research', 'Scoping'] },
 
     { key: 'Data Engineering & Analytics',
       blurb: 'Clean it, model it, answer the question.',
-      detail: 'You do the work. Every project committee is built around this track — cleaning, pipeline, analysis, recommendation.',
+      detail: 'Pull the exports, reconcile the schemas, build the pipeline, fit the model, and write the number you would defend out loud in the client meeting.',
       learn: ['SQL', 'Python / pandas', 'Forecasting', 'Dashboards'] },
 
     { key: 'Marketing',
-      blurb: 'Recruitment, brand, and events — on campus and off.',
-      detail: 'You build the audience. Campus and city presence, analyst recruitment, and the networking events that make membership worth more than the projects alone.',
+      blurb: 'Recruitment, brand, and events, on campus and off.',
+      detail: 'Run the activities fair table and the application funnel, write the social and email copy, and produce the networking events.',
       learn: ['Brand & social', 'Recruitment', 'Events', 'Copywriting'] },
 
     { key: 'Software Engineering',
       blurb: 'This website, internal tools, client-facing builds.',
-      detail: 'You own the software — this site, the tooling that keeps engagements out of scattered docs, and anything a committee needs built.',
+      detail: 'Ship this site, the intake and application tooling, and whatever a committee needs built. Code review is part of the job.',
       learn: ['HTML / CSS / JS', 'Git & deployment', 'APIs', 'UI design'] }
   ];
 
@@ -238,9 +238,9 @@
     };
 
     // NB: assigning `var(--danger)` to the borderColor shorthand via CSSOM is
-    // dropped by the browser — use literal values here.
+    // dropped by the browser, use literal values here.
     const flag = el => {
-      // a file input is visually hidden — mark its drop zone instead
+      // a file input is visually hidden, mark its drop zone instead
       const zone = el.closest('.dropzone');
       if (zone) {
         zone.classList.add('err');
@@ -383,7 +383,7 @@
      never broken while the form is still being built.
      ========================================================= */
   const APPLICATION = {
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdWPb6xAHQoc6pOwLVTI4s4hCGSLjjYbiHmi5934D_lQjjVCQ/viewform',
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLScz4wf3hdG0lP15b31Hs4LRRSD6aywFxheRJivpQ4uXFB2VlA/viewform',
     committeeEntry: ''       // e.g. 'entry.1234567890'
   };
 
@@ -407,7 +407,7 @@
 
     if (!APPLICATION.url) {                       // form not built yet
       applyLink.href = 'mailto:cdsg.columbia@gmail.com?subject=' +
-        encodeURIComponent('Analyst application \u2014 CDSG');
+        encodeURIComponent('Analyst application, CDSG');
       applyLink.removeAttribute('target');
       applyLink.innerHTML = 'Email us to apply <span class="arrow">\u2192</span>';
       if (applyNote) applyNote.textContent =
@@ -429,7 +429,7 @@
   /* ---------------- Business intake ---------------- */
   wireForm('business-form', {
     finalLabel: 'Review my brief',
-    subject: d => `CDSG pilot client — ${d.organization || 'New enquiry'}`,
+    subject: d => `CDSG pilot client, ${d.organization || 'New enquiry'}`,
     body: (d) => [
       `PILOT CLIENT ENQUIRY`,
       ``,
@@ -441,17 +441,17 @@
       `Size:         ${d.size || ''}`,
       `Nonprofit:    ${d.nonprofit || ''}`,
       ``,
-      `— Data —`,
-      `Systems:      ${d.systems || '—'}`,
+      `, Data ,`,
+      `Systems:      ${d.systems || ','}`,
       `History:      ${d.history || ''}`,
       `Can share:    ${d.sharing || ''}`,
-      `Prior work:   ${d.tried || '—'}`,
+      `Prior work:   ${d.tried || ','}`,
       ``,
-      `— The decision I'm trying to make —`,
+      `, The decision I'm trying to make ,`,
       d.question || '',
       ``,
-      `— What it's costing right now —`,
-      d.cost || '—',
+      `, What it's costing right now ,`,
+      d.cost || ',',
       ``,
       `Preferred start: ${d.timing || ''}`
     ].join('\n')

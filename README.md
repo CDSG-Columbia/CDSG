@@ -1,15 +1,15 @@
-# Columbia Data & Strategy Group — website
+# Columbia Data & Strategy Group, website
 
 Static site. No build step, no dependencies, no framework. Open `index.html` in a browser
 and it works.
 
 ```
 cdsg-site/
-├── index.html          Homepage — minimal, routes into the other four pages
-├── about.html          What We Do — the five-stage pipeline
-├── team.html           Executive Board — the eight seats and what each owns
-├── projects.html       Projects — honest empty state + example briefs
-├── join.html           Get Involved — TWO PATHS (students / businesses)
+├── index.html          Homepage, minimal, routes into the other four pages
+├── about.html          What We Do, the five-stage pipeline
+├── team.html           Executive Board, the eight seats and what each owns
+├── projects.html       Projects, honest empty state + example briefs
+├── join.html           Get Involved, TWO PATHS (students / businesses)
 └── assets/
     ├── css/main.css    All styling + the design tokens
     └── js/
@@ -60,10 +60,10 @@ While `url` is empty the button falls back to a mailto, so the page is never bro
 | --- | --- | --- |
 | Full name | Short answer | required |
 | Columbia email | Short answer | required |
-| School | Dropdown | all 18 — the old on-site list is in git history if you want to copy it |
+| School | Dropdown | all 18, the old on-site list is in git history if you want to copy it |
 | Expected graduation | Dropdown | 2027–2031, Other |
 | Major / intended field | Short answer | "Undecided" allowed |
-| **Preferred committee** | Multiple choice | Strategy & Client / Data Engineering & Analytics / Marketing / Software Engineering — **this is the pre-filled one** |
+| **Preferred committee** | Multiple choice | Strategy & Client / Data Engineering & Analytics / Marketing / Software Engineering, **this is the pre-filled one** |
 | Interested in a board seat? | Multiple choice | Not now / Maybe / Yes |
 | Experience with data tools | Multiple choice | None yet → I build things regularly |
 | Hours available per week | Multiple choice | 4–6 default |
@@ -74,7 +74,7 @@ While `url` is empty the button falls back to a mailto, so the page is never bro
 | A NYC business you'd want to work with | Paragraph | optional, and genuinely useful for client sourcing |
 
 Turn on **"Collect email addresses"** and **"Limit to 1 response"**. File upload requires
-respondents to be signed in to a Google account — fine for students on LionMail, which is
+respondents to be signed in to a Google account, fine for students on LionMail, which is
 exactly why the *client* intake form stayed on-site.
 
 ## The honesty rule this site is built on
@@ -85,12 +85,12 @@ hasn't happened**. Specifically:
 - The homepage status board reads `2026 founded / 0 engagements completed / Fall ’26 first cohort / Open`.
 - The Projects page opens with "Nothing here yet. That's the honest answer."
 - All nine project cards are labelled **Illustrative** and written entirely in the
-  conditional ("we'd", "you'd"). They carry no outcome metrics — deliberately, because a
+  conditional ("we'd", "you'd"). They carry no outcome metrics, deliberately, because a
   "−22% waste" figure reads as a result even next to a disclaimer.
 - All eight board seats show as **open**, because they are.
 - The pipeline animation and the cleaning table are labelled as synthetic demos.
 - The numbers on the Join page (6–8 hrs/week, 12 weeks, 4–6 person teams, $0 dues) sit
-  under a heading that says *"How it's designed to run"* — they're stated intent, not
+  under a heading that says *"How it's designed to run"*, they're stated intent, not
   history.
 
 **If you edit copy, keep this rule.** The credibility of a brand-new group comes from
@@ -112,11 +112,11 @@ Both are reachable from:
 - the **Apply ▾** dropdown in the nav (hover on desktop, tap on touch),
 - the two "doors" on the homepage,
 - the mobile menu, which lists them as separate entries,
-- direct links — `join.html#business` deep-links straight to the business panel.
+- direct links, `join.html#business` deep-links straight to the business panel.
 
 Both forms run on the same engine (`wireForm` in `join.js`). Neither submits anywhere:
 they compose a `mailto:` with the answers formatted as plain text. To make them really
-submit, the least-effort options are Formspree, Netlify Forms, or a Google Form endpoint —
+submit, the least-effort options are Formspree, Netlify Forms, or a Google Form endpoint ,
 add an `action` to the `<form>` and call `form.submit()` inside `finish()`.
 
 ---
@@ -130,18 +130,18 @@ application.
 | Track | What it does |
 | --- | --- |
 | **Strategy & Client** | Sources the deals. Pitching, market research, intake, gets the data out of the client, single point of contact. The sales-shaped team. |
-| **Data Engineering & Analytics** | The actual data work — cleaning, pipelines, models, and the answer. |
+| **Data Engineering & Analytics** | The actual data work, cleaning, pipelines, models, and the answer. |
 | **Marketing** | Growth on campus and off: brand, analyst recruitment, networking events. |
-| **Software Engineering** | What we ship — this website, internal tooling, client-facing builds. |
+| **Software Engineering** | What we ship, this website, internal tooling, client-facing builds. |
 
 ### Founding partners vs. board seats
 
 Two separate things, deliberately:
 
-* **`FOUNDERS`** in `team.js` — three people, permanent designation, never re-elected.
+* **`FOUNDERS`** in `team.js`, three people, permanent designation, never re-elected.
   Renders as a violet strip above the board. Add a `name` to replace the placeholder;
   add a `bio` too and the card becomes clickable.
-* **`BOARD`** in `team.js` — six seats, all currently open, filled on merit and rotating.
+* **`BOARD`** in `team.js`, six seats, all currently open, filled on merit and rotating.
   A founder can also hold a seat; the seat just isn't automatically theirs.
 
 The six board seats map onto the tracks:
@@ -159,7 +159,7 @@ The six board seats map onto the tracks:
 adds a chip automatically.
 
 **If you add or reorder a track**, the `INTERESTS` weight vectors in `join.js` are positional
-— each is `[Strategy & Client, Data Eng & Analytics, Marketing, Software Engineering]`. Get the
+, each is `[Strategy & Client, Data Eng & Analytics, Marketing, Software Engineering]`. Get the
 order wrong and the matcher silently recommends the wrong track. There's a brute-force check
 worth re-running in the console after any edit: enumerate every 3-pick combination and confirm
 all four tracks can still win. Current spread is roughly 81 / 56 / 43 / 40 out of 220.
@@ -168,7 +168,7 @@ all four tracks can still win. Current spread is roughly 81 / 56 / 43 / 40 out o
 per client, built from the data team (plus client-side members where useful), does the analysis.
 One committee per business. Service is free to every client, always.
 
-**Board seats have three states** — see the comment at the top of `team.js`. A seat can be
+**Board seats have three states**, see the comment at the top of `team.js`. A seat can be
 filled without a name published yet, which is how it ships now.
 
 The five radar axes (`AXES` in `team.js`) are `[Engineering, Analytics, Strategy, Marketing,
@@ -186,7 +186,7 @@ The auto-tour stops permanently the moment someone clicks a stage.
 
 ## What to edit before publishing
 
-**1. Board seats** — `assets/js/team.js`. Each seat ships as `open: true`. As you fill one:
+**1. Board seats**, `assets/js/team.js`. Each seat ships as `open: true`. As you fill one:
 
 ```js
 open:  false,
@@ -196,22 +196,22 @@ major: 'Statistics',
 bio:   'One or two sentences about them.',
 ```
 
-Leave `role`, `div`, `owns`, `skills` and `radar` alone — those describe the *seat*, not
+Leave `role`, `div`, `owns`, `skills` and `radar` alone, those describe the *seat*, not
 the person, which is why they're truthful before anyone fills it. The card, drawer,
 filters, seat counter, and both radar charts all regenerate automatically.
 
-**2. Example briefs** — `assets/js/projects.js`. Add, remove, or rewrite freely; the
+**2. Example briefs**, `assets/js/projects.js`. Add, remove, or rewrite freely; the
 sector filters and counters derive from the array. Keep the conditional voice until the
 work is real.
 
-**3. Contact details** — `cdsg.columbia@gmail.com` appears in the footer of all five
+**3. Contact details**, `cdsg.columbia@gmail.com` appears in the footer of all five
 pages and in both form handlers. The LinkedIn / Instagram / GitHub links are `href="#"`.
 
-**4. Dates** — "Fall 2026" and "founding cohort" appear across all pages. The student
+**4. Dates**, "Fall 2026" and "founding cohort" appear across all pages. The student
 recruitment timeline uses relative weeks (Week 1, Week 2, Week 3) with a note saying exact
-dates lock in after student-group recognition — swap in real dates once you have them.
+dates lock in after student-group recognition, swap in real dates once you have them.
 
-**5. Address** — the footer says just "Columbia University, New York, NY 10027". Add a
+**5. Address**, the footer says just "Columbia University, New York, NY 10027". Add a
 room or meeting location once you have one.
 
 ---
@@ -229,10 +229,10 @@ Tokens are at the top of `main.css`:
 
 | Token | Current | Used for |
 | --- | --- | --- |
-| `--neon` | `#38CDFF` | **primary accent** — neon blue. Most UI colour comes from here |
+| `--neon` | `#38CDFF` | **primary accent**, neon blue. Most UI colour comes from here |
 | `--neon-deep` | `#2563FF` | electric blue for glows, shadows, ambient gradients |
 | `--columbia` | `#A9D8F2` | the pale school blue, kept as a stop in display gradients |
-| `--mint` | `#3AE8C8` | secondary — "good data" / open / highlight state |
+| `--mint` | `#3AE8C8` | secondary, "good data" / open / highlight state |
 | `--violet` | `#A67CFF` | tertiary accent |
 | `--amber` | `#FFC46B` | honesty notes, "illustrative" badges, Bronx on the map |
 | `--danger` | `#FF5C7A` | dirty records, form errors |
@@ -241,7 +241,7 @@ Tokens are at the top of `main.css`:
 The palette is deliberately **four hues, not one**: neon blue carries the interface, mint
 marks anything open or clean, violet adds depth in the ambient field, and amber is the warm
 counterweight on the honesty notes and "illustrative" badges. If you push the neon further,
-keep amber — it's the only thing stopping the whole page reading as a single colour.
+keep amber, it's the only thing stopping the whole page reading as a single colour.
 
 Canvas colours are a **separate** copy of the palette in `core.js` (`CDSG_COLORS`), as RGB
 triplet strings because canvas needs `rgba(r,g,b,a)`. Change a hue and you must change it in
@@ -252,7 +252,7 @@ Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (data labels), via 
 
 ### Micro-glyphs
 
-Static icons are gone. `core.js` holds `GLYPH_FX` — fifteen small looping canvas animations
+Static icons are gone. `core.js` holds `GLYPH_FX`, fifteen small looping canvas animations
 (`table scan forecast optimize target dashboard funnel pipe broadcast code lock doc zero
 people clock`). Drop one in anywhere:
 
@@ -261,7 +261,7 @@ people clock`). Drop one in anywhere:
 ```
 
 Auto-wired on load. For markup you generate yourself, call `CDSG_glyphs(container)` after
-inserting it — `join.js` does this for the committee cards. `CDSG_GLYPH_FX` is exposed if you
+inserting it, `join.js` does this for the committee cards. `CDSG_GLYPH_FX` is exposed if you
 want to draw one by hand or add your own. `clock` is defined but currently unused; it's there
 for the next time you need a time-based card.
 
@@ -301,7 +301,7 @@ Every canvas animation pauses when it scrolls off screen and when the tab is hid
 ### Two implementation notes worth knowing
 
 - **Canvas sizing.** `CDSG_canvas` measures from `getBoundingClientRect`, and the rAF loop
-  is paused while a canvas is off-screen — so any layout code must measure directly rather
+  is paused while a canvas is off-screen, so any layout code must measure directly rather
   than trust a cached width. `about.js` re-runs its layout on the first paint for this reason.
 - **CSS variables in the CSSOM.** Assigning `var(--danger)` to the `borderColor` shorthand
   via JS is silently dropped by browsers. Form error styling uses literal hex values.
