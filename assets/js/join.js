@@ -1,5 +1,5 @@
 /* ============ Get Involved, two paths ============
-   Panel A: students  → track matcher + analyst application
+   Panel A: students  → team matcher + Google Form hand-off
    Panel B: businesses → pilot client intake
    Both forms run on the same step engine (wireForm).
    Neither submits anywhere: they compose a mailto. See README.
@@ -425,7 +425,7 @@
 
     if (!APPLICATION.url) {                       // form not built yet
       applyLink.href = 'mailto:cdsg.columbia@gmail.com?subject=' +
-        encodeURIComponent('Analyst application, CDSG');
+        encodeURIComponent('CDSG application');
       applyLink.removeAttribute('target');
       applyLink.innerHTML = 'Email us to apply <span class="arrow">\u2192</span>';
       if (applyNote) applyNote.textContent =

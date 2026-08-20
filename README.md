@@ -33,7 +33,7 @@ Then open <http://localhost:8787>.
 
 ## The student application lives in Google Forms
 
-`join.html` no longer contains the analyst form. It shows a hand-off panel instead, and the
+`join.html` no longer contains an application form. It shows a hand-off panel instead, and the
 committee matcher feeds its suggestion straight into the form as a pre-filled field.
 
 **To switch it on**, edit `APPLICATION` at the top of the `wireForm` section in `join.js`:
@@ -69,8 +69,8 @@ While `url` is empty the button falls back to a mailto, so the page is never bro
 | Hours available per week | Multiple choice | 4–6 default |
 | Résumé / CV | **File upload** | the reason we moved to Forms |
 | Other links | Short answer | LinkedIn, GitHub, portfolio |
-| A number that surprised you | Paragraph | required |
-| A NYC business you'd want to work with | Paragraph | optional, and genuinely useful for client sourcing |
+| Relevant coursework | Short answer | optional |
+| Three written answers | Paragraph | **executive applicants only**, branched off the position question |
 
 Turn on **"Collect email addresses"** and **"Limit to 1 response"**. File upload requires
 respondents to be signed in to a Google account, fine for students on LionMail, which is
@@ -104,7 +104,7 @@ the illustrative briefs with case studies and add the metrics back then.
 
 | Path | Anchor | Form | Goes to |
 | --- | --- | --- | --- |
-| Students | `join.html#students` | `#student-form` | Track matcher → analyst application |
+| Students | `join.html#students` | Google Form | Team matcher → hand-off panel (analyst and board) |
 | Businesses | `join.html#business` | `#business-form` | Pilot client intake |
 
 Both are reachable from:
