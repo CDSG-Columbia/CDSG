@@ -167,11 +167,14 @@
     tcards.style.gridTemplateColumns = 'repeat(4,1fr)';
     tcards.innerHTML = TRACKS.map((t, i) => `
       <div class="cap" data-track="${i}" data-reveal data-delay="${i * .06}">
-        <div class="mono" style="font-size:10px;letter-spacing:.18em;color:var(--text-faint)">TRACK 0${i + 1}</div>
+        <div class="ico"><canvas data-glyph="${['funnel','pipe','broadcast','code'][i]}"></canvas></div>
+        <div class="mono" style="font-size:10px;letter-spacing:.18em;color:var(--text-faint)">COMMITTEE 0${i + 1}</div>
         <h3 style="margin-top:10px">${t.key}</h3>
         <p>${t.blurb}</p>
         <div class="chips mt-s">${t.learn.map(l => `<span class="chip">${l}</span>`).join('')}</div>
       </div>`).join('');
+    if (window.CDSG_glyphs) window.CDSG_glyphs(tcards);
+
     $$('[data-reveal]', tcards).forEach(el => {
       new IntersectionObserver((en, ob) => {
         if (en[0].isIntersecting) {
@@ -455,4 +458,29 @@
   });
 
   score();
+
+  /* ---------------- Recruitment stepper ---------------- */
+  const rec = $('#rec-steps');
+  if (rec) {
+    const steps = $$('.tl', rec);
+    const fill = document.createElement('div');
+    fill.className = 'tl-fill';
+    rec.appendChild(fill);
+    let auto = null, k = 0;
+    const show = i => {
+      steps.forEach((st, j) => st.classList.toggle('done', j <= i));
+      fill.style.width = (i / (steps.length - 1)) * 88 + '%';
+    };
+    steps.forEach((st, i) => st.addEventListener('click', () => {
+      if (auto) clearInterval(auto);
+      auto = -1;
+      show(i);
+    }));
+    new IntersectionObserver(en => {
+      if (en[0].isIntersecting && auto === null) {
+        show(0);
+        auto = setInterval(() => { k = (k + 1) % steps.length; show(k); }, 1500);
+      }
+    }, { threshold: .4 }).observe(rec);
+  }
 })();

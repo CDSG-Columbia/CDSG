@@ -394,6 +394,242 @@
     });
   });
 
+
+  /* =========================================================
+     Micro-glyphs
+     Small looping canvas animations that replace static icons.
+     Each takes (ctx, w, h, frame) and draws inside ~42x42.
+     Add data-glyph="name" to a <canvas> and it wires itself up.
+     (GLYPH_FX, not GLYPHS -- that name is taken by the scramble alphabet.)
+     ========================================================= */
+  const GLYPH_FX = {
+    table(ctx, w, h, t) {
+      const rows = 4, cols = 3, pad = 5;
+      const cw = (w - pad * 2) / cols, rh = (h - pad * 2) / rows;
+      const cursor = ((t / 11) | 0) % (rows * cols + 5);
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        const on = r * cols + c <= cursor;
+        ctx.fillStyle = `rgba(${on ? C.mint : C.blue},${on ? .5 : .13})`;
+        ctx.fillRect(pad + c * cw + 1, pad + r * rh + 1, cw - 2, rh - 2);
+      }
+    },
+
+    scan(ctx, w, h, t) {
+      const y = 5 + ((t * .55) % (h - 10));
+      for (let i = 0; i < 16; i++) {
+        const x = 7 + (i % 4) * ((w - 14) / 3);
+        const yy = 7 + ((i / 4) | 0) * ((h - 14) / 3);
+        const near = Math.abs(yy - y) < 7;
+        ctx.fillStyle = `rgba(${near ? C.mint : C.blue},${near ? .95 : .17})`;
+        ctx.beginPath(); ctx.arc(x, yy, near ? 2.2 : 1.7, 0, 7); ctx.fill();
+      }
+      ctx.strokeStyle = `rgba(${C.mint},.45)`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(4, y); ctx.lineTo(w - 4, y); ctx.stroke();
+    },
+
+    forecast(ctx, w, h, t) {
+      const knee = w * .6, kneeY = h * .44;
+      ctx.strokeStyle = `rgba(${C.blue},.8)`; ctx.lineWidth = 1.6; ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(6, h - 7); ctx.lineTo(w * .26, h * .64); ctx.lineTo(w * .44, h * .72); ctx.lineTo(knee, kneeY);
+      ctx.stroke();
+      ctx.setLineDash([3, 3]); ctx.lineDashOffset = -t * .45;
+      ctx.strokeStyle = `rgba(${C.mint},.85)`;
+      ctx.beginPath(); ctx.moveTo(knee, kneeY); ctx.lineTo(w - 6, h * .15); ctx.stroke();
+      ctx.setLineDash([]);
+      const p = (t % 95) / 95;
+      ctx.fillStyle = `rgba(${C.mint},1)`;
+      ctx.beginPath();
+      ctx.arc(knee + (w - 6 - knee) * p, kneeY + (h * .15 - kneeY) * p, 2.2, 0, 7);
+      ctx.fill();
+    },
+
+    optimize(ctx, w, h, t) {
+      const n = 5, bw = (w - 12) / n;
+      for (let i = 0; i < n; i++) {
+        const best = i === 2;
+        const v = best ? .88 : .3 + Math.sin(t / 25 + i * .8) * .22;
+        const bh = v * (h - 12);
+        ctx.fillStyle = `rgba(${best ? C.mint : C.blue},${best ? .55 : .2})`;
+        ctx.fillRect(6 + i * bw + 1, h - 6 - bh, bw - 2, bh);
+        if (best) {
+          ctx.strokeStyle = `rgba(${C.mint},${.5 + Math.sin(t / 14) * .35})`;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.moveTo(6 + i * bw + 1, h - 6 - bh); ctx.lineTo(6 + i * bw + bw - 1, h - 6 - bh); ctx.stroke();
+        }
+      }
+    },
+
+    target(ctx, w, h, t) {
+      const cx = w / 2, cy = h / 2, R = Math.min(w, h);
+      [.4, .27, .14].forEach((f, i) => {
+        ctx.strokeStyle = `rgba(${C.blue},${.18 + i * .14})`; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(cx, cy, R * f, 0, 7); ctx.stroke();
+      });
+      const p = (t % 130) / 130, r = R * .4 * (1 - p), a = t * .075;
+      ctx.fillStyle = `rgba(${C.mint},${.35 + p * .65})`;
+      ctx.beginPath(); ctx.arc(cx + Math.cos(a) * r, cy + Math.sin(a) * r, 2.3, 0, 7); ctx.fill();
+    },
+
+    dashboard(ctx, w, h, t) {
+      [[0, 0], [1, 0], [0, 1], [1, 1]].forEach(([qx, qy], i) => {
+        const bw = (w - 12) / 2, bh = (h - 12) / 2;
+        const a = .16 + Math.abs(Math.sin(t / 27 + i * 1.15)) * .5;
+        ctx.fillStyle = `rgba(${i === 0 ? C.mint : C.blue},${a})`;
+        ctx.fillRect(5 + qx * (bw + 2), 5 + qy * (bh + 2), bw, bh);
+      });
+    },
+
+    funnel(ctx, w, h, t) {
+      ctx.strokeStyle = `rgba(${C.blue},.35)`; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(6, 7); ctx.lineTo(w / 2, h - 7); ctx.lineTo(w - 6, 7); ctx.stroke();
+      for (let i = 0; i < 5; i++) {
+        const p = ((t * .85 + i * 38) % 135) / 135;
+        const spread = (1 - p) * (w / 2 - 9);
+        ctx.fillStyle = `rgba(${p > .72 ? C.mint : C.blue},${.3 + p * .6})`;
+        ctx.beginPath();
+        ctx.arc(w / 2 + Math.sin(i * 2.3) * spread, 7 + p * (h - 14), 1.9, 0, 7);
+        ctx.fill();
+      }
+    },
+
+    pipe(ctx, w, h, t) {
+      for (let l = 0; l < 2; l++) {
+        const y = h * (.36 + l * .28);
+        ctx.strokeStyle = `rgba(${C.blue},.15)`; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(4, y); ctx.lineTo(w - 4, y); ctx.stroke();
+        for (let i = 0; i < 3; i++) {
+          const p = ((t * 1.05 + i * 44 + l * 22) % 128) / 128;
+          ctx.fillStyle = `rgba(${p > .7 ? C.mint : C.blue},${.32 + p * .55})`;
+          ctx.fillRect(4 + p * (w - 8), y - 1.2, 4 + p * 3, 2.4);
+        }
+      }
+    },
+
+    broadcast(ctx, w, h, t) {
+      const cx = w * .26, cy = h / 2;
+      ctx.fillStyle = `rgba(${C.mint},.95)`;
+      ctx.beginPath(); ctx.arc(cx, cy, 2.5, 0, 7); ctx.fill();
+      for (let i = 0; i < 3; i++) {
+        const p = ((t * .85 + i * 40) % 120) / 120;
+        ctx.strokeStyle = `rgba(${C.blue},${(1 - p) * .75})`; ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(cx, cy, 5 + p * (w * .62), -.85, .85); ctx.stroke();
+      }
+    },
+
+    code(ctx, w, h, t) {
+      ctx.strokeStyle = `rgba(${C.blue},.8)`; ctx.lineWidth = 1.7; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.moveTo(w * .37, h * .28); ctx.lineTo(w * .21, h * .5); ctx.lineTo(w * .37, h * .72); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(w * .63, h * .28); ctx.lineTo(w * .79, h * .5); ctx.lineTo(w * .63, h * .72); ctx.stroke();
+      if (((t / 24) | 0) % 2 === 0) {
+        ctx.fillStyle = `rgba(${C.mint},.95)`;
+        ctx.fillRect(w * .47, h * .36, 2.2, h * .28);
+      }
+    },
+
+    lock(ctx, w, h, t) {
+      ctx.strokeStyle = `rgba(${C.blue},.7)`; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.arc(w / 2, h * .42, w * .15, Math.PI, 0); ctx.stroke();
+      const a = .45 + Math.abs(Math.sin(t / 32)) * .45;
+      ctx.fillStyle = `rgba(${C.mint},${a * .35})`;
+      ctx.fillRect(w / 2 - w * .21, h * .44, w * .42, h * .3);
+      ctx.strokeStyle = `rgba(${C.mint},${a})`; ctx.lineWidth = 1.2;
+      ctx.strokeRect(w / 2 - w * .21, h * .44, w * .42, h * .3);
+    },
+
+    doc(ctx, w, h, t) {
+      ctx.strokeStyle = `rgba(${C.blue},.45)`; ctx.lineWidth = 1.2;
+      ctx.strokeRect(w * .24, h * .16, w * .52, h * .68);
+      for (let i = 0; i < 4; i++) {
+        const grow = Math.max(0, Math.min(1, (((t / 14) % 30) - i * 3) / 3));
+        ctx.strokeStyle = `rgba(${i === 0 ? C.mint : C.blue},${.22 + grow * .6})`;
+        ctx.lineWidth = 1.4;
+        const y = h * .3 + i * (h * .13);
+        ctx.beginPath(); ctx.moveTo(w * .32, y); ctx.lineTo(w * .32 + grow * (w * .36), y); ctx.stroke();
+      }
+    },
+
+    zero(ctx, w, h, t) {
+      const r = Math.min(w, h) * .23;
+      ctx.strokeStyle = `rgba(${C.mint},.9)`; ctx.lineWidth = 2.2;
+      ctx.beginPath(); ctx.ellipse(w / 2, h / 2, r * .7, r, 0, 0, 7); ctx.stroke();
+      const p = (t % 105) / 105;
+      ctx.strokeStyle = `rgba(${C.mint},${(1 - p) * .5})`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(w / 2, h / 2, r + p * (w * .3), 0, 7); ctx.stroke();
+    },
+
+    people(ctx, w, h, t) {
+      const pts = [[w * .5, h * .27], [w * .25, h * .71], [w * .75, h * .71]];
+      ctx.strokeStyle = `rgba(${C.blue},.3)`; ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      ctx.lineTo(pts[1][0], pts[1][1]);
+      ctx.lineTo(pts[2][0], pts[2][1]);
+      ctx.closePath(); ctx.stroke();
+      pts.forEach((pt, i) => {
+        const a = .4 + Math.abs(Math.sin(t / 25 + i * 2.1)) * .55;
+        ctx.fillStyle = `rgba(${i === 0 ? C.mint : C.blue},${a})`;
+        ctx.beginPath(); ctx.arc(pt[0], pt[1], 2.6, 0, 7); ctx.fill();
+      });
+    },
+
+    clock(ctx, w, h, t) {
+      const r = Math.min(w, h) * .3;
+      ctx.strokeStyle = `rgba(${C.blue},.4)`; ctx.lineWidth = 1.3;
+      ctx.beginPath(); ctx.arc(w / 2, h / 2, r, 0, 7); ctx.stroke();
+      ctx.strokeStyle = `rgba(${C.mint},.3)`; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(w / 2, h / 2, r, -Math.PI / 2, -Math.PI / 2 + 1.15); ctx.stroke();
+      const a = -Math.PI / 2 + t / 48;
+      ctx.strokeStyle = `rgba(${C.mint},.9)`; ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(w / 2, h / 2);
+      ctx.lineTo(w / 2 + Math.cos(a) * r * .78, h / 2 + Math.sin(a) * r * .78);
+      ctx.stroke();
+    }
+  };
+
+  function wireGlyphs(root = document) {
+    $$('[data-glyph]', root).forEach(cv => {
+      if (cv.dataset.wired) return;
+      const fn = GLYPH_FX[cv.dataset.glyph];
+      if (!fn) return;
+      cv.dataset.wired = '1';
+      makeCanvas(cv, (ctx, w, h, t) => { ctx.clearRect(0, 0, w, h); fn(ctx, w, h, t); });
+    });
+  }
+  window.CDSG_glyphs = wireGlyphs;
+  window.CDSG_GLYPH_FX = GLYPH_FX;   // exposed so individual glyphs can be tested/extended
+  wireGlyphs();
+
+  /* =========================================================
+     Cell strips — a number shown as lit cells instead of prose
+     <div class="cells" data-cells="12" data-lit="2" [data-sweep]>
+     ========================================================= */
+  function wireCells(root = document) {
+    $$('[data-cells]', root).forEach(el => {
+      if (el.dataset.wired) return;
+      el.dataset.wired = '1';
+      const n = +el.dataset.cells || 8;
+      const lit = +el.dataset.lit || 0;
+      el.innerHTML = Array.from({ length: n }, (_, i) => `<i${i < lit ? ' class="on"' : ''}></i>`).join('');
+      if (!el.hasAttribute('data-sweep') || reduced) return;
+      const cells = [...el.children];
+      let k = 0, timer = null;
+      new IntersectionObserver(en => {
+        if (en[0].isIntersecting && !timer) {
+          timer = setInterval(() => {
+            cells.forEach((c, i) => c.classList.toggle('on', i <= k));
+            k = (k + 1) % (n + 4);
+          }, 180);
+        } else if (!en[0].isIntersecting && timer) {
+          clearInterval(timer); timer = null;
+        }
+      }, { threshold: 0 }).observe(el);
+    });
+  }
+  window.CDSG_cells = wireCells;
+  wireCells();
+
   /* ---------------- Footer year ---------------- */
   $$('[data-year]').forEach(el => (el.textContent = new Date().getFullYear()));
 

@@ -177,32 +177,32 @@
 
       <div class="cap-grid">
         <div class="cap" data-reveal>
-          <div class="ico">🗂️</div>
+          <div class="ico"><canvas data-glyph="table"></canvas></div>
           <h3>Data Infrastructure</h3>
           <p>Scattered exports into one source of truth you can keep querying.</p>
         </div>
         <div class="cap" data-reveal data-delay=".06">
-          <div class="ico">🔍</div>
+          <div class="ico"><canvas data-glyph="scan"></canvas></div>
           <h3>Diagnostic Analysis</h3>
           <p>Cohorts, margins, churn drivers. Where the money actually goes.</p>
         </div>
         <div class="cap" data-reveal data-delay=".12">
-          <div class="ico">📈</div>
+          <div class="ico"><canvas data-glyph="forecast"></canvas></div>
           <h3>Forecasting</h3>
           <p>Demand, staffing, inventory — on your seasonality, not an industry average.</p>
         </div>
         <div class="cap" data-reveal data-delay=".18">
-          <div class="ico">⚙️</div>
+          <div class="ico"><canvas data-glyph="optimize"></canvas></div>
           <h3>Operations Optimization</h3>
           <p>Scheduling, routing, prep timing, reorder points. Small changes that compound.</p>
         </div>
         <div class="cap" data-reveal data-delay=".24">
-          <div class="ico">🎯</div>
+          <div class="ico"><canvas data-glyph="target"></canvas></div>
           <h3>Strategy &amp; Positioning</h3>
           <p>Competitive scans, pricing tests, market sizing — your few blocks, not a national report.</p>
         </div>
         <div class="cap" data-reveal data-delay=".3">
-          <div class="ico">📊</div>
+          <div class="ico"><canvas data-glyph="dashboard"></canvas></div>
           <h3>Dashboards &amp; Handoff</h3>
           <p>A live dashboard and documentation, so the answer outlasts the semester.</p>
         </div>
@@ -227,22 +227,15 @@
           </div>
         </div>
 
-        <div class="stack" data-reveal data-dir="right">
-          <div class="card" style="padding:24px">
-            <div class="mono" style="font-size:10px; letter-spacing:.2em; color:var(--neon)">WEEKS 1–2</div>
-            <h3 class="mt-s" style="font-size:1.14rem">Scoping &amp; data audit</h3>
-            <p class="muted" style="font-size:.88rem; margin-top:8px">We pin down the decision and inventory what data exists.</p>
+        <div class="wk" data-reveal data-dir="right">
+          <div class="wk-cells" id="wk-cells"></div>
+          <div class="wk-nums" id="wk-nums"></div>
+          <div class="wk-phases">
+            <button class="wk-ph on" data-a="0" data-b="2" data-cap="Pin down the decision. Inventory what data exists.">Scope</button>
+            <button class="wk-ph" data-a="2" data-b="7" data-cap="Clean, pipeline, analyse. Checkpoint every two weeks.">Build</button>
+            <button class="wk-ph" data-a="7" data-b="12" data-cap="Deck, dashboard, documentation, follow-up.">Hand off</button>
           </div>
-          <div class="card" style="padding:24px">
-            <div class="mono" style="font-size:10px; letter-spacing:.2em; color:var(--neon)">WEEKS 3–7</div>
-            <h3 class="mt-s" style="font-size:1.14rem">Build &amp; analyze</h3>
-            <p class="muted" style="font-size:.88rem; margin-top:8px">Cleaning, pipeline, analysis. Checkpoint every two weeks.</p>
-          </div>
-          <div class="card" style="padding:24px">
-            <div class="mono" style="font-size:10px; letter-spacing:.2em; color:var(--neon)">WEEKS 8–12</div>
-            <h3 class="mt-s" style="font-size:1.14rem">Recommend &amp; hand off</h3>
-            <p class="muted" style="font-size:.88rem; margin-top:8px">Deck, dashboard, documented pipeline, and a follow-up.</p>
-          </div>
+          <div class="wk-cap" id="wk-cap">Pin down the decision. Inventory what data exists.</div>
         </div>
       </div>
     </div>

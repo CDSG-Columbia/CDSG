@@ -373,4 +373,40 @@
       if (en[0].isIntersecting) { setTimeout(run, 500); ob.disconnect(); }
     }, { threshold: .45 }).observe(tb);
   }
+
+  /* =========================================================
+     12-WEEK ENGAGEMENT TRACK
+     Three phases over twelve week-cells. Auto-cycles until clicked.
+     ========================================================= */
+  const wkCells = $('#wk-cells');
+  if (wkCells) {
+    const N = 12;
+    wkCells.innerHTML = Array.from({ length: N }, () => '<i></i>').join('');
+    const nums = $('#wk-nums');
+    if (nums) nums.innerHTML = Array.from({ length: N }, (_, i) => `<span>${i + 1}</span>`).join('');
+    const cells = [...wkCells.children];
+    const phases = $$('.wk-ph');
+    const cap = $('#wk-cap');
+
+    const show = k => {
+      const ph = phases[k];
+      const a = +ph.dataset.a, b = +ph.dataset.b;
+      cells.forEach((c, i) => c.classList.toggle('on', i >= a && i < b));
+      phases.forEach((p2, i) => p2.classList.toggle('on', i === k));
+      if (cap) cap.textContent = ph.dataset.cap;
+    };
+
+    let k = 0, auto = null;
+    phases.forEach((p2, i) => p2.addEventListener('click', () => {
+      if (auto) clearInterval(auto);
+      auto = -1;
+      show(i);
+    }));
+    new IntersectionObserver(en => {
+      if (en[0].isIntersecting && auto === null) {
+        show(0);
+        auto = setInterval(() => { k = (k + 1) % phases.length; show(k); }, 2600);
+      }
+    }, { threshold: .35 }).observe(wkCells);
+  }
 })();

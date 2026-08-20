@@ -249,6 +249,33 @@ both places.
 
 Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (data labels), via Google Fonts.
 
+
+### Micro-glyphs
+
+Static icons are gone. `core.js` holds `GLYPH_FX` — fifteen small looping canvas animations
+(`table scan forecast optimize target dashboard funnel pipe broadcast code lock doc zero
+people clock`). Drop one in anywhere:
+
+```html
+<div class="ico"><canvas data-glyph="forecast"></canvas></div>
+```
+
+Auto-wired on load. For markup you generate yourself, call `CDSG_glyphs(container)` after
+inserting it — `join.js` does this for the committee cards. `CDSG_GLYPH_FX` is exposed if you
+want to draw one by hand or add your own. `clock` is defined but currently unused; it's there
+for the next time you need a time-based card.
+
+### Cell strips
+
+A number shown as lit cells instead of a sentence:
+
+```html
+<div class="cells" data-cells="6" data-lit="2"></div>          <!-- 2 of 6 -->
+<div class="cells" data-cells="12" data-lit="0" data-sweep></div>  <!-- animates a fill -->
+```
+
+Add `mint` to the class for the secondary colour. `data-sweep` pauses off-screen.
+
 ### Where the interactive pieces live
 
 | Feature | File |
@@ -261,6 +288,10 @@ Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (data labels), via 
 | Seat competency radars | `team.js` → `radar()` |
 | NYC hex cartogram (all boroughs open) | `projects.js` → `CELLS` + `build()` |
 | Brief flow ornament | `projects.js` → `flowViz()` |
+| 15 micro-glyphs | `core.js` → `GLYPH_FX` |
+| Cell strips | `core.js` → `wireCells()` |
+| 12-week engagement track | `about.js`, bottom |
+| Recruitment stepper | `join.js`, bottom |
 | Track matcher scoring | `join.js` → `INTERESTS` weight vectors |
 | Path switching + both forms | `join.js` → `showPanel()`, `wireForm()` |
 
