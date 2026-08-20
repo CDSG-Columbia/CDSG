@@ -854,3 +854,23 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
 .tl.done::before{ background:var(--mint); border-color:var(--mint); box-shadow:0 0 16px var(--mint); }
 .tl.done h4{ color:#fff; }
 @media (max-width:820px){ .tl-fill{ display:none; } }
+
+/* =========================================================
+   Mobile fixes
+   ========================================================= */
+
+/* A sideways reveal offset hangs content off the left/right edge on a narrow
+   screen, where body{overflow-x:hidden} then clips it. Go vertical instead. */
+@media (max-width:820px){
+  [data-reveal][data-dir="left"],
+  [data-reveal][data-dir="right"]{ transform:translateY(24px); }   /* no sideways reveal */
+}
+
+/* Four-up grid (the committee cards) needs to collapse like every other grid.
+   This used to be an inline style from JS, which beat the media queries. */
+.cap-grid.four{ grid-template-columns:repeat(4,1fr); }
+@media (max-width:1080px){ .cap-grid.four{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:620px){  .cap-grid.four{ grid-template-columns:1fr; } }
+
+/* long tool names shouldn't push a chip past the viewport */
+.chip{ max-width:100%; overflow-wrap:anywhere; }

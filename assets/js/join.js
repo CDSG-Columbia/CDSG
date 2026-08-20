@@ -164,7 +164,7 @@
 
   const tcards = $('#track-cards');
   if (tcards) {
-    tcards.style.gridTemplateColumns = 'repeat(4,1fr)';
+    tcards.classList.add('four');   // CSS handles the responsive collapse
     tcards.innerHTML = TRACKS.map((t, i) => `
       <div class="cap" data-track="${i}" data-reveal data-delay="${i * .06}">
         <div class="ico"><canvas data-glyph="${['funnel','pipe','broadcast','code'][i]}"></canvas></div>

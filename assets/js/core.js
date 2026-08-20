@@ -37,10 +37,25 @@
     const href = a.getAttribute('href');
     if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http') ||
         a.target === '_blank' || e.metaKey || e.ctrlKey || reduced) return;
+
+    // Same document, different hash (e.g. the footer's join.html#students while
+    // already on join.html). Assigning location.href would NOT reload, so the
+    // veil would drop and never lift, leaving a black screen. Let the browser
+    // handle it instead.
+    let target = null;
+    try { target = new URL(href, location.href); } catch (_) {}
+    if (target && target.pathname === location.pathname && target.hash) return;
+
     e.preventDefault();
     veil.classList.remove('lift');
     veil.classList.add('drop');
     setTimeout(() => (location.href = href), 420);
+    // belt and braces: if navigation is blocked for any reason, don't strand
+    // the visitor behind an opaque overlay
+    setTimeout(() => {
+      veil.classList.remove('drop');
+      veil.classList.add('lift');
+    }, 2200);
   });
 
   /* ---------------- Nav ---------------- */
