@@ -375,15 +375,15 @@
   }
 
   /* =========================================================
-     12-WEEK ENGAGEMENT TRACK
-     Three phases over twelve week-cells. Auto-cycles until clicked.
+     ENGAGEMENT TRACK
+     Three phases as an abstract progress bar. Deliberately unnumbered: the
+     length of an engagement is not fixed yet, so the cells show sequence and
+     proportion, not weeks. Auto-cycles until clicked.
      ========================================================= */
   const wkCells = $('#wk-cells');
   if (wkCells) {
-    const N = 12;
+    const N = 9;
     wkCells.innerHTML = Array.from({ length: N }, () => '<i></i>').join('');
-    const nums = $('#wk-nums');
-    if (nums) nums.innerHTML = Array.from({ length: N }, (_, i) => `<span>${i + 1}</span>`).join('');
     const cells = [...wkCells.children];
     const phases = $$('.wk-ph');
     const cap = $('#wk-cap');

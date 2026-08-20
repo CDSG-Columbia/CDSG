@@ -68,7 +68,6 @@ While `url` is empty the button falls back to a mailto, so the page is never bro
 | Experience with data tools | Multiple choice | None yet → I build things regularly |
 | Hours available per week | Multiple choice | 4–6 default |
 | Résumé / CV | **File upload** | the reason we moved to Forms |
-| Transcript | **File upload** | unofficial fine |
 | Other links | Short answer | LinkedIn, GitHub, portfolio |
 | A number that surprised you | Paragraph | required |
 | A NYC business you'd want to work with | Paragraph | optional, and genuinely useful for client sourcing |
@@ -89,7 +88,7 @@ hasn't happened**. Specifically:
   "−22% waste" figure reads as a result even next to a disclaimer.
 - All eight board seats show as **open**, because they are.
 - The pipeline animation and the cleaning table are labelled as synthetic demos.
-- The numbers on the Join page (6–8 hrs/week, 12 weeks, 4–6 person teams, $0 dues) sit
+- The numbers on the Join page (4–6 hrs/week, 4–6 person teams, $0 dues) sit
   under a heading that says *"How it's designed to run"*, they're stated intent, not
   history.
 
@@ -290,7 +289,7 @@ Add `mint` to the class for the secondary colour. `data-sweep` pauses off-screen
 | Brief flow ornament | `projects.js` → `flowViz()` |
 | 15 micro-glyphs | `core.js` → `GLYPH_FX` |
 | Cell strips | `core.js` → `wireCells()` |
-| 12-week engagement track | `about.js`, bottom |
+| Engagement phase track | `about.js`, bottom |
 | Recruitment stepper | `join.js`, bottom |
 | Track matcher scoring | `join.js` → `INTERESTS` weight vectors |
 | Path switching + both forms | `join.js` → `showPanel()`, `wireForm()` |

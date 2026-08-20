@@ -56,14 +56,14 @@ const BOARD = [
   {
     role: 'Vice President', div: 'Leadership', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Assigns analysts to committees, holds the two-week checkpoint calendar, and reads every deliverable before a client does. Steps in when a committee falls behind.',
+    owns: 'Assigns analysts to committees, holds the checkpoint calendar, and reads every deliverable before a client does. Steps in when a committee falls behind.',
     skills: ['Staffing', 'Process Design', 'Project Management', 'Python'],
     radar: [60, 74, 86, 62, 74]
   },
   {
     role: 'Director of Strategy & Client', div: 'Strategy & Client', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Builds the outreach list, sends the cold emails, runs the intake call, and writes the scoping document. Owns the market research and is the client’s only point of contact for twelve weeks.',
+    owns: 'Builds the outreach list, sends the cold emails, runs the intake call, and writes the scoping document. Owns the market research and is the client’s only point of contact from first call to hand-off.',
     skills: ['Client Sourcing', 'Pitching', 'Market Research', 'Scoping'],
     radar: [30, 58, 96, 72, 98]
   },
