@@ -146,10 +146,9 @@
 
     const sum2 = $('#match-summary');
     if (sum2) {
-      if (chosen.size === 0) {
-        sum2.innerHTML = `<span class="faint" style="font-size:.9rem">Nothing selected yet.</span>`;
-      } else if (chosen.size < 3) {
-        sum2.innerHTML = `<span class="faint" style="font-size:.9rem">Pick ${3 - chosen.size} more for a real reading.</span>`;
+      // stay silent until there's enough signal to say something
+      if (chosen.size < 3) {
+        sum2.innerHTML = '';
       } else {
         sum2.innerHTML = `<div class="card" style="padding:18px 20px">
           <div class="mono" style="font-size:10px;letter-spacing:.18em;color:var(--mint)">STRONGEST MATCH</div>

@@ -223,6 +223,28 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
   if (counter) counter.innerHTML =
     `<span class="pill">${openCount} of ${BOARD.length} seats open</span>`;
 
+  /* ---------------- Unrevealed names ----------------
+     A founder with no `name` yet renders as live gibberish rather than a
+     "to be announced" label. Add the name and this stops entirely. */
+  function scramble(el, len) {
+    const G = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*<>/{}[]?$@';
+    const roll = () => {
+      let out = '';
+      for (let i = 0; i < len; i++) out += G[(Math.random() * G.length) | 0];
+      el.textContent = out;
+    };
+    roll();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let live = false, f = 0;
+    new IntersectionObserver(en => { live = en[0].isIntersecting; if (live) loop(); },
+      { threshold: 0 }).observe(el);
+    function loop() {
+      if (!live || document.hidden) return;
+      if (++f % 5 === 0) roll();          // ~12 changes a second
+      requestAnimationFrame(loop);
+    }
+  }
+
   /* ---------------- Founding partners ---------------- */
   const fwrap = $('#founders');
   if (fwrap) {
@@ -231,10 +253,13 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
         <div class="f-av">${initials(f.name) || String(i + 1).padStart(2, '0')}</div>
         <div>
           <div class="f-lbl">Founding Partner</div>
-          <h4>${f.name || 'Name to be published'}</h4>
-          <div class="f-sub">${f.name ? [f.year, f.major].filter(Boolean).join(' \u00b7 ') : 'Founded the group, 2026'}</div>
+          <h4 class="f-name${f.name ? '' : ' scram'}">${f.name || ''}</h4>
+          ${f.name && (f.year || f.major)
+            ? `<div class="f-sub">${[f.year, f.major].filter(Boolean).join(' \u00b7 ')}</div>` : ''}
         </div>
       </div>`).join('');
+
+    $$('.f-name.scram', fwrap).forEach((el, i) => scramble(el, 9 + (i % 3) * 2));
 
     $$('.founder', fwrap).forEach((el, i) => {
       new IntersectionObserver((en, ob) => {
