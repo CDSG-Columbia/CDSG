@@ -15,68 +15,71 @@
    which is why they can be truthful before anyone fills it.
 
    radar axes (0–100) = the competency mix this seat is staffed for:
-   [Engineering, Analytics, Strategy, Visualization, Client]
+   [Engineering, Analytics, Strategy, Marketing, Client]
+
+   `div` doubles as the filter chip on the page, and maps onto the four
+   member tracks (plus Leadership and Operations, which sit above them).
    ========================================================= */
 const BOARD = [
   {
     role: 'President', div: 'Leadership', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Sets the semester agenda, owns client relationships end to end, and runs the weekly scoping review where every engagement gets its question sharpened before a single row is pulled.',
+    owns: 'Sets the semester agenda, holds final say on which engagements we take, and runs the weekly scoping review where every project gets its question sharpened before a single row is pulled.',
     skills: ['Client Strategy', 'Project Scoping', 'SQL', 'Financial Modeling'],
-    radar: [55, 78, 95, 60, 92]
+    radar: [45, 72, 95, 66, 92]
   },
   {
     role: 'Vice President', div: 'Leadership', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Runs internal operations — staffing, timelines, and the quality bar. If a deliverable ships late or half-baked, it is this seat’s problem before it is anyone else’s.',
-    skills: ['Ops Research', 'Team Staffing', 'Python', 'Process Design'],
-    radar: [72, 82, 84, 55, 74]
+    owns: 'Runs the machine — staffing, timelines, and the quality bar across all four tracks. If a deliverable ships late or half-baked, it is this seat’s problem before it is anyone else’s.',
+    skills: ['Team Staffing', 'Process Design', 'Project Management', 'Python'],
+    radar: [60, 74, 86, 62, 74]
   },
   {
-    role: 'Director of Data Engineering', div: 'Engineering', open: true,
+    role: 'Director of Strategy & Client', div: 'Strategy & Client', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Owns the ingestion and cleaning layer, and builds the internal template pipeline that should take a client’s raw exports to a queryable warehouse inside a week.',
-    skills: ['Python', 'dbt', 'Postgres', 'Airflow', 'ETL'],
-    radar: [96, 74, 45, 58, 40]
+    owns: 'Owns the front of the house. Sources and pitches clients, runs intake, does the market research, extracts the data, and stays the single point of contact for the whole twelve weeks. Right now this is the seat that gets us our first client.',
+    skills: ['Client Sourcing', 'Pitching', 'Market Research', 'Scoping', 'Presenting'],
+    radar: [30, 58, 96, 72, 98]
   },
   {
-    role: 'Director of Analytics', div: 'Analytics', open: true,
+    role: 'Director of Data Engineering', div: 'Data Engineering & Analytics', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Leads modeling and inference, and keeps the group honest about what the data can and cannot support. This is the person who says "that’s a correlation" out loud.',
+    owns: 'Owns the ingestion and cleaning layer, and builds the template pipeline that should take a client’s raw exports to a queryable warehouse inside a week.',
+    skills: ['Python', 'SQL', 'dbt', 'Postgres', 'ETL'],
+    radar: [96, 74, 40, 26, 38]
+  },
+  {
+    role: 'Director of Analytics', div: 'Data Engineering & Analytics', open: true,
+    name: null, year: null, major: null, bio: null,
+    owns: 'Leads modeling and inference, and keeps the group honest about what the data can and cannot support. This is the person who says "that’s a correlation" out loud in the client meeting.',
     skills: ['R', 'Causal Inference', 'Forecasting', 'A/B Testing'],
-    radar: [70, 97, 62, 72, 48]
+    radar: [66, 97, 58, 30, 48]
   },
   {
-    role: 'Director of Strategy', div: 'Strategy', open: true,
+    role: 'Director of Marketing', div: 'Marketing', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Turns findings into recommendations a business owner can act on Monday morning. Runs competitive scans and pricing work across engagements.',
-    skills: ['Market Sizing', 'Pricing', 'Competitive Analysis', 'Storytelling'],
-    radar: [42, 68, 96, 70, 88]
+    owns: 'Owns everything that makes people aware we exist — campus and city presence, the recruitment cycle for each analyst cohort, and the networking events that make membership worth more than the project work alone.',
+    skills: ['Brand & Social', 'Recruitment', 'Event Production', 'Copywriting'],
+    radar: [26, 46, 62, 97, 80]
   },
   {
-    role: 'Director of Client Engagement', div: 'Strategy', open: true,
+    role: 'Director of Software Engineering', div: 'Software Engineering', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Sources new NYC clients, runs intake, and manages expectations on both sides so scope stays fixed and relationships outlast the semester. Right now this seat is the one that gets us our first client.',
-    skills: ['Business Development', 'Client Comms', 'Intake', 'Scoping'],
-    radar: [35, 55, 84, 62, 98]
-  },
-  {
-    role: 'Director of Visualization', div: 'Analytics', open: true,
-    name: null, year: null, major: null, bio: null,
-    owns: 'Designs the dashboards and final decks. Works from the belief that a chart needing a paragraph of explanation is a chart that failed.',
-    skills: ['D3.js', 'Tableau', 'Figma', 'Dashboard Design'],
-    radar: [68, 76, 58, 98, 66]
+    owns: 'Owns the software we ship: this website, the internal tooling that keeps engagements out of scattered Google Docs, and any client-facing build a project needs.',
+    skills: ['JavaScript', 'Git & Deployment', 'APIs', 'UI Design'],
+    radar: [93, 56, 40, 48, 36]
   },
   {
     role: 'Director of Operations & Finance', div: 'Operations', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Runs the budget, recruitment logistics, and member onboarding — the machinery that lets everyone else point in roughly the same direction.',
-    skills: ['Budgeting', 'Recruitment', 'Excel', 'Logistics'],
-    radar: [48, 62, 70, 52, 82]
+    owns: 'Runs the budget, the governing-board paperwork, room bookings, and member onboarding — the unglamorous machinery that lets the other seven seats do their actual jobs.',
+    skills: ['Budgeting', 'Logistics', 'Onboarding', 'Excel'],
+    radar: [40, 58, 68, 56, 78]
   }
 ];
 
-const AXES = ['Engineering', 'Analytics', 'Strategy', 'Visualization', 'Client'];
+const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
 
 (() => {
   const $  = (s, c = document) => c.querySelector(s);

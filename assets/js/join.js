@@ -64,33 +64,42 @@
      [Engineering, Analytics, Strategy, Design]
      ========================================================= */
   const TRACKS = [
-    { key: 'Data Engineering', blurb: 'Ingestion, cleaning, and the pipelines everything else stands on.',
-      detail: 'You own the unglamorous 60%. Build the connectors, write the transforms, enforce the schema, and hand the client a warehouse they can still query in a year.',
-      learn: ['SQL & Postgres', 'Python / pandas', 'dbt & scheduling', 'Data modeling'] },
-    { key: 'Analytics & Modeling', blurb: 'Segments, forecasts, and the question of whether an effect is real.',
-      detail: 'You do the statistics. Cohort analysis, forecasting, experiment design, and the discipline of saying how confident you actually are.',
-      learn: ['Regression & inference', 'Forecasting', 'Experiment design', 'R or Python'] },
-    { key: 'Strategy & Client', blurb: 'Scoping the question and turning findings into a decision.',
-      detail: 'You sit closest to the client. Define the decision, run the interviews, size the market, and write the recommendation that survives contact with a real business.',
-      learn: ['Scoping & framing', 'Market sizing', 'Pricing analysis', 'Client communication'] },
-    { key: 'Visualization & Product', blurb: 'Dashboards, decks, and making the answer impossible to misread.',
-      detail: 'You build the artifact the client keeps. Dashboards, final decks, and the interface between a model and a human who has four minutes.',
-      learn: ['Tableau / Looker', 'D3.js', 'Figma', 'Visual grammar'] }
+    { key: 'Strategy & Client',
+      blurb: 'The front of the house — find the clients, scope the question, own the relationship.',
+      detail: 'You are the channel between a business and the rest of the club. Source and pitch clients, run the intake conversations, do the market research, get the data out of them, and make sure the recommendation lands with someone who can actually act on it.',
+      learn: ['Client sourcing & pitching', 'Scoping & framing', 'Market research', 'Financial modeling', 'Presenting'] },
+
+    { key: 'Data Engineering & Analytics',
+      blurb: 'The actual data work — cleaning, pipelines, models, and the answer itself.',
+      detail: 'You do the real thing. Take whatever the client hands over, get it into a state where it can answer a question, then answer it — and be honest about how confident you are in the answer.',
+      learn: ['SQL & Postgres', 'Python / pandas', 'Regression & forecasting', 'Dashboards'] },
+
+    { key: 'Marketing',
+      blurb: 'Growth, on campus and off — recruitment, brand, and events.',
+      detail: 'You build the audience. Make the club known at Columbia and across the city, run recruitment for each analyst cohort, and put on the networking events that make membership worth more than the project work alone.',
+      learn: ['Brand & social', 'Recruitment campaigns', 'Event production', 'Copywriting'] },
+
+    { key: 'Software Engineering',
+      blurb: 'The things we ship — this website, internal tools, client-facing builds.',
+      detail: 'You own the software. This site is yours to run, plus the internal tooling that keeps engagements from living in twelve scattered Google Docs, plus anything client-facing we need to build.',
+      learn: ['HTML / CSS / JS', 'Git & deployment', 'APIs & tooling', 'UI design'] }
   ];
 
+  // Weight vectors line up with TRACKS above:
+  // [Strategy & Client, Data Eng & Analytics, Marketing, Software Engineering]
   const INTERESTS = [
-    ['Untangling a messy spreadsheet',        [3, 1, 0, 0]],
-    ['Finding out why a number moved',        [1, 3, 1, 0]],
-    ['Talking to a business owner',           [0, 0, 3, 1]],
-    ['Making a chart people actually read',   [0, 1, 0, 3]],
-    ['Writing code that runs on a schedule',  [3, 1, 0, 0]],
-    ['Arguing about what causes what',        [0, 3, 2, 0]],
-    ['Sizing a market from scratch',          [0, 1, 3, 0]],
-    ['Designing an interface',                [0, 0, 0, 3]],
-    ['Building a forecast',                   [1, 3, 1, 1]],
-    ['Presenting to a room',                  [0, 0, 3, 2]],
-    ['Automating something tedious',          [3, 1, 0, 1]],
-    ['Rewriting a slide until it lands',      [0, 0, 2, 3]]
+    ['Cold-emailing a local business owner',          [3, 0, 1, 0]],
+    ['Untangling a messy spreadsheet',                [0, 3, 0, 1]],
+    ['Finding out why a number moved',                [1, 3, 0, 0]],
+    ['Running the booth at the activities fair',      [0, 0, 3, 0]],
+    ['Writing code that runs on a schedule',          [0, 1, 0, 3]],
+    ['Being in the room when a client decides',       [3, 0, 1, 0]],
+    ['Sizing a market from scratch',                  [3, 1, 1, 0]],
+    ['Shipping a website people actually use',        [0, 0, 0, 3]],
+    ['Building a forecast',                           [0, 3, 0, 1]],
+    ['Planning a networking night',                   [1, 0, 3, 0]],
+    ['Explaining a chart to someone who hates charts',[3, 1, 2, 0]],
+    ['Designing an interface someone gets in seconds',[0, 0, 1, 3]]
   ];
 
   const chosen = new Set();
@@ -132,6 +141,8 @@
     });
     const cnt = $('#sel-count');
     if (cnt) cnt.textContent = chosen.size;
+    const tot = $('#sel-total');
+    if (tot) tot.textContent = INTERESTS.length;
 
     const sum2 = $('#match-summary');
     if (sum2) {

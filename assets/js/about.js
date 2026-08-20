@@ -291,7 +291,7 @@
     let auto = null;
     new IntersectionObserver(en => {
       if (en[0].isIntersecting && auto === null) {
-        auto = setInterval(() => setStage((stage + 1) % 5), 5200);
+        auto = setInterval(() => setStage((stage + 1) % 5), 3470);   // 1.5x faster than the original 5200ms
       }
     }, { threshold: .35 }).observe(cv);
 

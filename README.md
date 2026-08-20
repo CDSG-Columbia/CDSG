@@ -75,6 +75,52 @@ add an `action` to the `<form>` and call `form.submit()` inside `finish()`.
 
 ---
 
+## Tracks and the board
+
+Four member tracks. They're defined **once**, in the `TRACKS` array in `assets/js/join.js`,
+and drive the track matcher, the four detail cards, and the preferred-track picker on the
+application.
+
+| Track | What it does |
+| --- | --- |
+| **Strategy & Client** | Front of the house. Sources and pitches clients, market research, intake, gets the data out of them, stays the single point of contact. The sales/IB-shaped team. |
+| **Data Engineering & Analytics** | The actual data work — cleaning, pipelines, models, and the answer. |
+| **Marketing** | Growth on campus and off: brand, analyst recruitment, networking events. |
+| **Software Engineering** | What we ship — this website, internal tooling, client-facing builds. |
+
+The eight board seats in `assets/js/team.js` map onto those tracks:
+
+| Seat | Division |
+| --- | --- |
+| President, Vice President | Leadership |
+| Director of Strategy & Client | Strategy & Client |
+| Director of Data Engineering, Director of Analytics | Data Engineering & Analytics |
+| Director of Marketing | Marketing |
+| Director of Software Engineering | Software Engineering |
+| Director of Operations & Finance | Operations |
+
+`div` doubles as the filter chip on the board page, so adding a seat with a new division
+adds a chip automatically.
+
+**If you add or reorder a track**, the `INTERESTS` weight vectors in `join.js` are positional
+— each is `[Strategy & Client, Data Eng & Analytics, Marketing, Software Engineering]`. Get the
+order wrong and the matcher silently recommends the wrong track. There's a brute-force check
+worth re-running in the console after any edit: enumerate every 3-pick combination and confirm
+all four tracks can still win. Current spread is roughly 81 / 56 / 43 / 40 out of 220.
+
+The five radar axes (`AXES` in `team.js`) are `[Engineering, Analytics, Strategy, Marketing,
+Client]` and must stay in sync with the 5-number `radar` array on every seat.
+
+## Timing knobs
+
+| What | Where | Value |
+| --- | --- | --- |
+| Pipeline stage auto-advance | `about.js`, the `setInterval` in the IntersectionObserver | `3470ms` |
+| Point morph speed between stages | `about.js`, the `lerp(..., 0.062)` calls | `0.062` |
+| Stage overlay fade-in | `about.js`, `since / 55` | 55 frames |
+
+The auto-tour stops permanently the moment someone clicks a stage.
+
 ## What to edit before publishing
 
 **1. Board seats** — `assets/js/team.js`. Each seat ships as `open: true`. As you fill one:
