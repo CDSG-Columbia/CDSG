@@ -159,6 +159,7 @@
     }
     syncTrackPicker();
     highlightTrackCard();
+    paintApply();
   }
 
   const tcards = $('#track-cards');
@@ -367,50 +368,60 @@
     })();
   }
 
-  /* ---------------- Student application ---------------- */
-  wireForm('student-form', {
-    finalLabel: 'Review application',
-    subject: d => `CDSG analyst application — ${d.name || 'Applicant'}`,
-    body: (d, form) => {
-      const committee = pickedTrack !== null ? TRACKS[pickedTrack].key
-                      : (bestTrack !== null ? TRACKS[bestTrack].key + ' (suggested)' : 'Undecided');
-      const interests = [...chosen].map(i => INTERESTS[i][0]).join('; ') || '—';
-      const fname = id => {
-        const el = form.querySelector('#' + id);
-        return (el && el.files && el.files[0]) ? el.files[0].name : '— not selected —';
-      };
-      return [
-        `ANALYST APPLICATION — founding cohort`,
-        ``,
-        `>> Please attach the two files listed under MATERIALS to this email.`,
-        ``,
-        `Name:        ${d.name || ''}`,
-        `Email:       ${d.email || ''}`,
-        `School:      ${d.school || ''}`,
-        `Graduating:  ${d.year || ''}`,
-        `Major:       ${d.major || '—'}`,
-        ``,
-        `Committee:   ${committee}`,
-        `Title:       Analyst`,
-        `Board seat:  ${d.board || ''}`,
-        `Experience:  ${d.experience || ''}`,
-        `Hours/week:  ${d.hours || ''}`,
-        `Tools:       ${d.tools || '—'}`,
-        `Interests:   ${interests}`,
-        ``,
-        `— MATERIALS (attach these) —`,
-        `Résumé/CV:   ${fname('s-resume')}`,
-        `Transcript:  ${fname('s-transcript')}`,
-        `Other links: ${d.links || '—'}`,
-        ``,
-        `— A number that surprised me —`,
-        d.why || '',
-        ``,
-        `— A NYC business I'd want to work with —`,
-        d.firstClient || '—'
-      ].join('\n');
+  /* =========================================================
+     STUDENT APPLICATION -> GOOGLE FORM
+
+     Paste the form's share link into `url`. To have the matcher's suggested
+     committee arrive pre-selected, open the form, pick "Get pre-filled link",
+     choose any committee, copy the generated URL, and read the `entry.NNNN`
+     number out of it into `committeeEntry`.
+
+     Leave `url` empty and the button falls back to email, so the page is
+     never broken while the form is still being built.
+     ========================================================= */
+  const APPLICATION = {
+    url: '',                 // e.g. 'https://docs.google.com/forms/d/e/FORM_ID/viewform'
+    committeeEntry: ''       // e.g. 'entry.1234567890'
+  };
+
+  const applyLink = $('#apply-link');
+  const applyNote = $('#apply-note');
+  const applyMatch = $('#apply-match');
+
+  function suggestedCommittee() {
+    if (pickedTrack !== null) return TRACKS[pickedTrack].key;
+    if (bestTrack !== null) return TRACKS[bestTrack].key;
+    return '';
+  }
+
+  function paintApply() {
+    if (!applyLink) return;
+    const committee = suggestedCommittee();
+
+    if (applyMatch) {
+      applyMatch.textContent = committee ? 'SUGGESTED COMMITTEE \u00b7 ' + committee.toUpperCase() : '';
     }
-  });
+
+    if (!APPLICATION.url) {                       // form not built yet
+      applyLink.href = 'mailto:cdsg.columbia@gmail.com?subject=' +
+        encodeURIComponent('Analyst application \u2014 CDSG');
+      applyLink.removeAttribute('target');
+      applyLink.innerHTML = 'Email us to apply <span class="arrow">\u2192</span>';
+      if (applyNote) applyNote.textContent =
+        'The application form opens with recruitment. Email us and we will send it to you directly.';
+      return;
+    }
+
+    let href = APPLICATION.url;
+    if (committee && APPLICATION.committeeEntry) {
+      href += (href.includes('?') ? '&' : '?') +
+              'usp=pp_url&' + APPLICATION.committeeEntry + '=' + encodeURIComponent(committee);
+    }
+    applyLink.href = href;
+    applyLink.target = '_blank';
+    applyLink.rel = 'noopener';
+    applyLink.innerHTML = 'Open the application <span class="arrow">\u2192</span>';
+  }
 
   /* ---------------- Business intake ---------------- */
   wireForm('business-form', {

@@ -800,3 +800,12 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
   font-family:var(--font-mono); font-size:.92rem; font-weight:400;
   color:var(--text-faint); letter-spacing:.06em;
 }
+
+/* ---------- "what you'll need" list ---------- */
+.need-list{ list-style:none; margin:14px 0 0; padding:0; }
+.need-list li{
+  position:relative; padding:10px 0 10px 26px; font-size:.92rem;
+  color:var(--text-dim); border-bottom:1px solid var(--line);
+}
+.need-list li:last-child{ border-bottom:none; }
+.need-list li::before{ content:'\2192'; position:absolute; left:0; color:var(--neon); }

@@ -31,6 +31,48 @@ Then open <http://localhost:8787>.
 
 ---
 
+## The student application lives in Google Forms
+
+`join.html` no longer contains the analyst form. It shows a hand-off panel instead, and the
+committee matcher feeds its suggestion straight into the form as a pre-filled field.
+
+**To switch it on**, edit `APPLICATION` at the top of the `wireForm` section in `join.js`:
+
+```js
+const APPLICATION = {
+  url: 'https://docs.google.com/forms/d/e/FORM_ID/viewform',
+  committeeEntry: 'entry.1234567890'
+};
+```
+
+Get `committeeEntry` from the form: **⋮ → Get pre-filled link**, choose any committee, submit,
+and read the `entry.NNNNN` number out of the URL Google gives you.
+
+While `url` is empty the button falls back to a mailto, so the page is never broken.
+
+**Fields the form should have**, matching what the site promises:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| Full name | Short answer | required |
+| Columbia email | Short answer | required |
+| School | Dropdown | all 18 — the old on-site list is in git history if you want to copy it |
+| Expected graduation | Dropdown | 2027–2031, Other |
+| Major / intended field | Short answer | "Undecided" allowed |
+| **Preferred committee** | Multiple choice | Strategy & Client / Data Engineering & Analytics / Marketing / Software Engineering — **this is the pre-filled one** |
+| Interested in a board seat? | Multiple choice | Not now / Maybe / Yes |
+| Experience with data tools | Multiple choice | None yet → I build things regularly |
+| Hours available per week | Multiple choice | 4–6 default |
+| Résumé / CV | **File upload** | the reason we moved to Forms |
+| Transcript | **File upload** | unofficial fine |
+| Other links | Short answer | LinkedIn, GitHub, portfolio |
+| A number that surprised you | Paragraph | required |
+| A NYC business you'd want to work with | Paragraph | optional, and genuinely useful for client sourcing |
+
+Turn on **"Collect email addresses"** and **"Limit to 1 response"**. File upload requires
+respondents to be signed in to a Google account — fine for students on LionMail, which is
+exactly why the *client* intake form stayed on-site.
+
 ## The honesty rule this site is built on
 
 The club has not launched. Every page is written so that **nothing claims work that

@@ -215,173 +215,28 @@
         <div class="sec-head" data-reveal>
           <div>
             <div class="eyebrow"><span class="dot"></span> Analyst application</div>
-            <h2 class="h2">Four steps.<br>Fifteen minutes.</h2>
+            <h2 class="h2">Fifteen minutes.</h2>
           </div>
         </div>
 
         <div class="form-shell" data-reveal>
-          <div class="steps-head" data-head="student">
-            <span class="step-pip active" data-step="0"><i>1</i> You</span>
-            <span class="step-sep"></span>
-            <span class="step-pip" data-step="1"><i>2</i> Committee</span>
-            <span class="step-sep"></span>
-            <span class="step-pip" data-step="2"><i>3</i> Materials</span>
-            <span class="step-sep"></span>
-            <span class="step-pip" data-step="3"><i>4</i> Thinking</span>
-          </div>
-
-          <form id="student-form" novalidate>
-            <div class="fstep active" data-step="0">
-              <div class="two-col">
-                <div class="field">
-                  <label for="s-name">Full name *</label>
-                  <input id="s-name" name="name" required placeholder="Alex Morningside">
-                </div>
-                <div class="field">
-                  <label for="s-email">Columbia email *</label>
-                  <input id="s-email" name="email" type="email" required placeholder="uni1234@columbia.edu">
-                </div>
-              </div>
-              <div class="two-col">
-                <div class="field">
-                  <label for="s-school">School</label>
-                  <select id="s-school" name="school">
-                    <option>Columbia College</option>
-                    <option>Columbia Engineering (SEAS)</option>
-                    <option>General Studies (GS)</option>
-                    <option>Barnard College</option>
-                    <option>Graduate School of Arts &amp; Sciences (GSAS)</option>
-                    <option>Business School (CBS)</option>
-                    <option>Law School</option>
-                    <option>SIPA</option>
-                    <option>Vagelos College of Physicians &amp; Surgeons</option>
-                    <option>Mailman School of Public Health</option>
-                    <option>School of Nursing</option>
-                    <option>College of Dental Medicine</option>
-                    <option>School of Social Work</option>
-                    <option>Journalism School</option>
-                    <option>School of the Arts</option>
-                    <option>GSAPP (Architecture)</option>
-                    <option>Teachers College</option>
-                    <option>School of Professional Studies (SPS)</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="s-year">Expected graduation</label>
-                  <select id="s-year" name="year">
-                    <option>2027</option><option>2028</option><option>2029</option>
-                    <option>2030</option><option>2031</option><option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field">
-                <label for="s-major">Major or intended field</label>
-                <input id="s-major" name="major" placeholder="Undecided is a real answer">
-              </div>
+          <div class="split" style="align-items:center; gap:clamp(24px,4vw,56px)">
+            <div>
+              <div class="mono faint" style="font-size:10px;letter-spacing:.2em">WHAT YOU&rsquo;LL NEED</div>
+              <ul class="need-list">
+                <li>R&eacute;sum&eacute; or CV</li>
+                <li>Transcript &mdash; unofficial is fine</li>
+                <li>Any links you want us to see</li>
+                <li>One short written answer</li>
+              </ul>
             </div>
-
-            <div class="fstep" data-step="1">
-              <div class="field">
-                <label>Preferred committee *</label>
-                <div class="interest-grid" id="track-picker"></div>
-                <div class="hint">Every member&rsquo;s title is <b>Analyst</b>, whichever committee you join.</div>
-              </div>
-              <div class="field">
-                <label>Interested in a founding board seat?</label>
-                <select id="s-board" name="board">
-                  <option>Not right now — analyst is good</option>
-                  <option>Maybe, tell me more</option>
-                  <option>Yes — I want to lead something</option>
-                </select>
-                <div class="hint">All six board seats are open. See <a href="team.html" style="color:var(--neon)">the board</a>.</div>
-              </div>
-              <div class="two-col">
-                <div class="field">
-                  <label for="s-exp">Experience with data tools</label>
-                  <select id="s-exp" name="experience">
-                    <option>None yet</option>
-                    <option>Comfortable in Excel / Sheets</option>
-                    <option>Some SQL or Python</option>
-                    <option>I build things regularly</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="s-hours">Hours available per week</label>
-                  <select id="s-hours" name="hours">
-                    <option selected>4–6</option><option>6–8</option><option>8–12</option><option>12+</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field">
-                <label for="s-tools">Anything you already know (optional)</label>
-                <input id="s-tools" name="tools" placeholder="Python, Tableau, a stubborn Excel workbook…">
-              </div>
+            <div>
+              <div id="apply-match" class="mono" style="font-size:10.5px;letter-spacing:.14em;color:var(--mint);min-height:16px"></div>
+              <a class="btn btn-primary mt-s" id="apply-link" href="#" data-magnetic>Open the application <span class="arrow">&rarr;</span></a>
+              <p class="faint mt-s" id="apply-note" style="font-size:.8rem;max-width:34ch">
+                Opens in Google Forms. Sign in with your Columbia account to attach files.
+              </p>
             </div>
-
-            <div class="fstep" data-step="2">
-              <div class="two-col">
-                <div class="field">
-                  <label>R&eacute;sum&eacute; / CV *</label>
-                  <label class="dropzone" for="s-resume">
-                    <input id="s-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required hidden>
-                    <span class="dz-ico">&uarr;</span>
-                    <span class="dz-txt">Drop it, or <b>browse</b></span>
-                    <span class="dz-name"></span>
-                  </label>
-                </div>
-                <div class="field">
-                  <label>Transcript *</label>
-                  <label class="dropzone" for="s-transcript">
-                    <input id="s-transcript" name="transcript" type="file" accept=".pdf,.doc,.docx" required hidden>
-                    <span class="dz-ico">&uarr;</span>
-                    <span class="dz-txt">Drop it, or <b>browse</b></span>
-                    <span class="dz-name"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="field">
-                <label for="s-links">Other links</label>
-                <input id="s-links" name="links" placeholder="LinkedIn, GitHub, portfolio">
-                <div class="hint">PDF preferred. An unofficial transcript is fine.</div>
-              </div>
-            </div>
-
-            <div class="fstep" data-step="3">
-              <div class="field">
-                <label for="s-why">A number that surprised you *</label>
-                <textarea id="s-why" name="why" maxlength="900" required
-                  placeholder="Any number, anywhere. What was it, and why didn't it match what you expected?"></textarea>
-                <div class="char-count"><span data-count-for="s-why">0</span> / 900</div>
-              </div>
-              <div class="field">
-                <label for="s-client">A NYC business you&rsquo;d want to work with</label>
-                <textarea id="s-client" name="firstClient" maxlength="500" style="min-height:88px"
-                  placeholder="And the question you'd ask it."></textarea>
-              </div>
-            </div>
-
-            <div class="form-nav">
-              <button type="button" class="btn btn-ghost" data-back style="visibility:hidden">← Back</button>
-              <button type="button" class="btn btn-primary" data-next data-magnetic>Continue <span class="arrow">→</span></button>
-            </div>
-          </form>
-
-          <div class="success" data-success="student">
-            <div class="tick">✓</div>
-            <h2 class="h2" style="font-size:1.9rem">Application drafted.</h2>
-            <p class="lead mx-auto mt-s" style="max-width:52ch">
-              Nothing was transmitted &mdash; this form has no backend yet. Send the email below, and
-              <b>attach your r&eacute;sum&eacute; and transcript</b> to it.
-            </p>
-            <div class="flex gap-m mt-m" style="justify-content:center;flex-wrap:wrap">
-              <a class="btn btn-primary" data-mailto href="#" data-magnetic>Email my application <span class="arrow">→</span></a>
-              <button class="btn btn-ghost" type="button" data-restart>Start over</button>
-            </div>
-            <details class="mt-l" style="text-align:left;max-width:640px;margin-inline:auto">
-              <summary class="mono faint" style="font-size:10.5px;letter-spacing:.16em;cursor:pointer">REVIEW MY RESPONSES</summary>
-              <pre data-dump class="mono" style="white-space:pre-wrap;font-size:11.5px;color:var(--text-dim);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:14px"></pre>
-            </details>
           </div>
         </div>
       </div>
@@ -399,8 +254,8 @@
 
         <div class="faq" data-reveal>
           <div class="faq-item">
-            <button class="faq-q">How is this different from other business clubs?</button>
-            <div class="faq-a"><p>Most of them are a speaker series with a mailing list. You sit in a room, hear from someone senior, and leave with a LinkedIn connection. Here you get a client, a committee, and twelve weeks to answer a question that changes what a real business does on Monday. We run networking events too &mdash; but as a by-product of the work, not instead of it.</p></div>
+            <button class="faq-q">What would I actually be doing?</button>
+            <div class="faq-a"><p>Client work, from week one. One committee, twelve weeks, a real business on the other end, and a decision waiting on what you find. Whatever you conclude, someone acts on it &mdash; so you finish the semester with work you can point at.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q">Why join a club that hasn't done anything yet?</button>
