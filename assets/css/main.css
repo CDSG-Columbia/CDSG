@@ -744,3 +744,28 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
 /* a filled seat: solid border, neutral flag, no recruitment glow */
 .member .flag.filled{ border-color:var(--line-strong); color:var(--text-faint); }
 .member:not(.open-role):hover{ border-color:rgba(56,205,255,.4); }
+
+/* ---------- File drop zones (named .dropzone: .drop is taken by .page-veil) ---------- */
+.dropzone{
+  display:flex; align-items:center; gap:12px; padding:15px 17px; border-radius:var(--r-md);
+  border:1px dashed var(--line-strong); background:rgba(255,255,255,.03);
+  cursor:pointer; transition:.3s var(--ease);
+}
+.dropzone:hover{ border-color:var(--neon); background:rgba(56,205,255,.06); }
+.dropzone.over{ border-color:var(--mint); background:rgba(58,232,200,.1); }
+.dropzone.has{ border-style:solid; border-color:rgba(58,232,200,.5); }
+.dropzone.err{ border-color:var(--danger); background:rgba(255,92,122,.06); }
+.dz-ico{
+  width:30px; height:30px; border-radius:9px; flex:none; display:grid; place-items:center;
+  border:1px solid var(--line-strong); font-size:13px; color:var(--neon);
+}
+.dropzone.has .dz-ico{ color:var(--mint); border-color:rgba(58,232,200,.45); }
+.dz-txt{ font-size:.86rem; color:var(--text-dim); }
+.dz-txt b{ color:var(--neon); font-weight:500; }
+.dz-name{
+  margin-left:auto; font-family:var(--font-mono); font-size:10.5px; color:var(--mint);
+  max-width:45%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+
+/* recruitment timeline: titles only */
+.timeline .tl h4{ margin:8px 0 0; }

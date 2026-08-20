@@ -237,6 +237,13 @@
     // NB: assigning `var(--danger)` to the borderColor shorthand via CSSOM is
     // dropped by the browser — use literal values here.
     const flag = el => {
+      // a file input is visually hidden — mark its drop zone instead
+      const zone = el.closest('.dropzone');
+      if (zone) {
+        zone.classList.add('err');
+        el.addEventListener('change', () => zone.classList.remove('err'), { once: true });
+        return;
+      }
       el.style.setProperty('border-color', '#FF5C7A');
       el.style.setProperty('box-shadow', '0 0 0 3px rgba(255,92,122,.16)');
       el.addEventListener('input', () => {
@@ -252,7 +259,11 @@
         const bad = !val || (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
         if (bad) { flag(el); ok = false; first = first || el; }
       });
-      if (first) first.focus();
+      if (first) {
+        const target = first.closest('.dropzone') || first;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (target === first) first.focus();
+      }
       return ok;
     }
 
@@ -269,9 +280,39 @@
       field?.addEventListener('input', () => { span.textContent = field.value.length; });
     });
 
+    /* ---- file drop zones ----
+       A mailto can't carry attachments, so these capture the filenames and the
+       success screen tells the applicant to attach the files to the email. */
+    $$('.dropzone', shell).forEach(zone => {
+      const input = $('input[type=file]', zone);
+      const nameEl = $('.dz-name', zone);
+      if (!input) return;
+      const paint = () => {
+        const file = input.files && input.files[0];
+        nameEl.textContent = file ? file.name : '';
+        zone.classList.toggle('has', !!file);
+        if (file) zone.classList.remove('err');
+      };
+      input.addEventListener('change', paint);
+      ['dragenter', 'dragover'].forEach(ev =>
+        zone.addEventListener(ev, e => { e.preventDefault(); zone.classList.add('over'); }));
+      ['dragleave', 'dragend'].forEach(ev =>
+        zone.addEventListener(ev, () => zone.classList.remove('over')));
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('over');
+        const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (!file) return;
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        input.files = dt.files;
+        paint();
+      });
+    });
+
     function finish() {
       const data = Object.fromEntries(new FormData(form).entries());
-      const lines = opts.body(data);
+      const lines = opts.body(data, form);
 
       $('[data-dump]', success).textContent = lines;
       $('[data-mailto]', success).href =
@@ -331,12 +372,18 @@
   wireForm('student-form', {
     finalLabel: 'Review application',
     subject: d => `CDSG analyst application — ${d.name || 'Applicant'}`,
-    body: d => {
-      const track = pickedTrack !== null ? TRACKS[pickedTrack].key
-                  : (bestTrack !== null ? TRACKS[bestTrack].key + ' (suggested)' : 'Undecided');
+    body: (d, form) => {
+      const committee = pickedTrack !== null ? TRACKS[pickedTrack].key
+                      : (bestTrack !== null ? TRACKS[bestTrack].key + ' (suggested)' : 'Undecided');
       const interests = [...chosen].map(i => INTERESTS[i][0]).join('; ') || '—';
+      const fname = id => {
+        const el = form.querySelector('#' + id);
+        return (el && el.files && el.files[0]) ? el.files[0].name : '— not selected —';
+      };
       return [
         `ANALYST APPLICATION — founding cohort`,
+        ``,
+        `>> Please attach the two files listed under MATERIALS to this email.`,
         ``,
         `Name:        ${d.name || ''}`,
         `Email:       ${d.email || ''}`,
@@ -344,20 +391,24 @@
         `Graduating:  ${d.year || ''}`,
         `Major:       ${d.major || '—'}`,
         ``,
-        `Track:       ${track}`,
+        `Committee:   ${committee}`,
+        `Title:       Analyst`,
         `Board seat:  ${d.board || ''}`,
         `Experience:  ${d.experience || ''}`,
         `Hours/week:  ${d.hours || ''}`,
         `Tools:       ${d.tools || '—'}`,
         `Interests:   ${interests}`,
         ``,
+        `— MATERIALS (attach these) —`,
+        `Résumé/CV:   ${fname('s-resume')}`,
+        `Transcript:  ${fname('s-transcript')}`,
+        `Other links: ${d.links || '—'}`,
+        ``,
         `— A number that surprised me —`,
         d.why || '',
         ``,
         `— A NYC business I'd want to work with —`,
-        d.firstClient || '—',
-        ``,
-        `Link:        ${d.link || '—'}`
+        d.firstClient || '—'
       ].join('\n');
     }
   });
@@ -366,7 +417,7 @@
   wireForm('business-form', {
     finalLabel: 'Review my brief',
     subject: d => `CDSG pilot client — ${d.organization || 'New enquiry'}`,
-    body: d => [
+    body: (d) => [
       `PILOT CLIENT ENQUIRY`,
       ``,
       `Organization: ${d.organization || ''}`,

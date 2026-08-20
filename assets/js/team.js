@@ -41,7 +41,7 @@ const BOARD = [
     radar: [60, 74, 86, 62, 74]
   },
   {
-    role: 'Director of Strategy & Client', div: 'Strategy & Client', open: false,
+    role: 'Director of Strategy & Client', div: 'Strategy & Client', open: true,
     name: null, year: null, major: null, bio: null,
     owns: 'Sources the deals. Runs intake and market research, and stays the client’s single point of contact.',
     skills: ['Client Sourcing', 'Pitching', 'Market Research', 'Scoping'],
