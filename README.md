@@ -83,7 +83,7 @@ application.
 
 | Track | What it does |
 | --- | --- |
-| **Strategy & Client** | Front of the house. Sources and pitches clients, market research, intake, gets the data out of them, stays the single point of contact. The sales/IB-shaped team. |
+| **Strategy & Client** | Sources the deals. Pitching, market research, intake, gets the data out of the client, single point of contact. The sales-shaped team. |
 | **Data Engineering & Analytics** | The actual data work — cleaning, pipelines, models, and the answer. |
 | **Marketing** | Growth on campus and off: brand, analyst recruitment, networking events. |
 | **Software Engineering** | What we ship — this website, internal tooling, client-facing builds. |
@@ -94,10 +94,10 @@ The eight board seats in `assets/js/team.js` map onto those tracks:
 | --- | --- |
 | President, Vice President | Leadership |
 | Director of Strategy & Client | Strategy & Client |
-| Director of Data Engineering, Director of Analytics | Data Engineering & Analytics |
+| Director of Data Engineering & Analytics | Data Engineering & Analytics |
 | Director of Marketing | Marketing |
 | Director of Software Engineering | Software Engineering |
-| Director of Operations & Finance | Operations |
+
 
 `div` doubles as the filter chip on the board page, so adding a seat with a new division
 adds a chip automatically.
@@ -108,6 +108,13 @@ order wrong and the matcher silently recommends the wrong track. There's a brute
 worth re-running in the console after any edit: enumerate every 3-pick combination and confirm
 all four tracks can still win. Current spread is roughly 81 / 56 / 43 / 40 out of 220.
 
+**How an engagement is structured:** Strategy & Client sources the deal; a dedicated committee
+per client, built from the data team (plus client-side members where useful), does the analysis.
+One committee per business. Service is free to every client, always.
+
+**Board seats have three states** — see the comment at the top of `team.js`. A seat can be
+filled without a name published yet, which is how it ships now.
+
 The five radar axes (`AXES` in `team.js`) are `[Engineering, Analytics, Strategy, Marketing,
 Client]` and must stay in sync with the 5-number `radar` array on every seat.
 
@@ -115,7 +122,7 @@ Client]` and must stay in sync with the 5-number `radar` array on every seat.
 
 | What | Where | Value |
 | --- | --- | --- |
-| Pipeline stage auto-advance | `about.js`, the `setInterval` in the IntersectionObserver | `3470ms` |
+| Pipeline stage auto-advance | `about.js`, the `setInterval` in the IntersectionObserver | `4400ms` |
 | Point morph speed between stages | `about.js`, the `lerp(..., 0.062)` calls | `0.062` |
 | Stage overlay fade-in | `about.js`, `since / 55` | 55 frames |
 
@@ -141,7 +148,7 @@ filters, seat counter, and both radar charts all regenerate automatically.
 sector filters and counters derive from the array. Keep the conditional voice until the
 work is real.
 
-**3. Contact details** — `datastrategy@columbia.edu` appears in the footer of all five
+**3. Contact details** — `cdsg.columbia@gmail.com` appears in the footer of all five
 pages and in both form handlers. The LinkedIn / Instagram / GitHub links are `href="#"`.
 
 **4. Dates** — "Fall 2026" and "founding cohort" appear across all pages. The student

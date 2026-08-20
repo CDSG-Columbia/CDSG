@@ -350,7 +350,7 @@ h3,.h3{ font-size:clamp(1.25rem,2vw,1.6rem); }
 .tag-bad{ color:var(--danger); } .tag-good{ color:var(--mint); }
 
 /* ---------- Team ---------- */
-.team-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 .member{
   position:relative; border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; cursor:pointer;
   background:linear-gradient(170deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
@@ -538,7 +538,7 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
 /* ---------- Responsive ---------- */
 @media (max-width:1080px){
   .portals{ grid-template-columns:repeat(2,1fr); }
-  .team-grid{ grid-template-columns:repeat(3,1fr); }
+  .team-grid{ grid-template-columns:repeat(2,1fr); }
   .proj-grid{ grid-template-columns:repeat(2,1fr); }
   .cap-grid{ grid-template-columns:repeat(2,1fr); }
   .carto-wrap{ grid-template-columns:1fr; }
@@ -740,3 +740,7 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
 /* the hairline rules pick up a faint electric cast */
 .stat-grid, .slots{ background:rgba(56,205,255,.14); }
 .dtable .hd{ background:rgba(56,205,255,.07); }
+
+/* a filled seat: solid border, neutral flag, no recruitment glow */
+.member .flag.filled{ border-color:var(--line-strong); color:var(--text-faint); }
+.member:not(.open-role):hover{ border-color:rgba(56,205,255,.4); }

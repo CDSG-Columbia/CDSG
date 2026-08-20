@@ -65,24 +65,24 @@
      ========================================================= */
   const TRACKS = [
     { key: 'Strategy & Client',
-      blurb: 'The front of the house — find the clients, scope the question, own the relationship.',
-      detail: 'You are the channel between a business and the rest of the club. Source and pitch clients, run the intake conversations, do the market research, get the data out of them, and make sure the recommendation lands with someone who can actually act on it.',
-      learn: ['Client sourcing & pitching', 'Scoping & framing', 'Market research', 'Financial modeling', 'Presenting'] },
+      blurb: 'Source the deals and own the client relationship.',
+      detail: 'You bring the work in. Find and pitch clients, run intake and market research, get the data out of them, and stay their single point of contact.',
+      learn: ['Client sourcing', 'Pitching', 'Market research', 'Scoping'] },
 
     { key: 'Data Engineering & Analytics',
-      blurb: 'The actual data work — cleaning, pipelines, models, and the answer itself.',
-      detail: 'You do the real thing. Take whatever the client hands over, get it into a state where it can answer a question, then answer it — and be honest about how confident you are in the answer.',
-      learn: ['SQL & Postgres', 'Python / pandas', 'Regression & forecasting', 'Dashboards'] },
+      blurb: 'Clean it, model it, answer the question.',
+      detail: 'You do the work. Every project committee is built around this track — cleaning, pipeline, analysis, recommendation.',
+      learn: ['SQL', 'Python / pandas', 'Forecasting', 'Dashboards'] },
 
     { key: 'Marketing',
-      blurb: 'Growth, on campus and off — recruitment, brand, and events.',
-      detail: 'You build the audience. Make the club known at Columbia and across the city, run recruitment for each analyst cohort, and put on the networking events that make membership worth more than the project work alone.',
-      learn: ['Brand & social', 'Recruitment campaigns', 'Event production', 'Copywriting'] },
+      blurb: 'Recruitment, brand, and events — on campus and off.',
+      detail: 'You build the audience. Campus and city presence, analyst recruitment, and the networking events that make membership worth more than the projects alone.',
+      learn: ['Brand & social', 'Recruitment', 'Events', 'Copywriting'] },
 
     { key: 'Software Engineering',
-      blurb: 'The things we ship — this website, internal tools, client-facing builds.',
-      detail: 'You own the software. This site is yours to run, plus the internal tooling that keeps engagements from living in twelve scattered Google Docs, plus anything client-facing we need to build.',
-      learn: ['HTML / CSS / JS', 'Git & deployment', 'APIs & tooling', 'UI design'] }
+      blurb: 'This website, internal tools, client-facing builds.',
+      detail: 'You own the software — this site, the tooling that keeps engagements out of scattered docs, and anything a committee needs built.',
+      learn: ['HTML / CSS / JS', 'Git & deployment', 'APIs', 'UI design'] }
   ];
 
   // Weight vectors line up with TRACKS above:
@@ -275,7 +275,7 @@
 
       $('[data-dump]', success).textContent = lines;
       $('[data-mailto]', success).href =
-        'mailto:datastrategy@columbia.edu' +
+        'mailto:cdsg.columbia@gmail.com' +
         '?subject=' + encodeURIComponent(opts.subject(data)) +
         '&body=' + encodeURIComponent(lines);
 
