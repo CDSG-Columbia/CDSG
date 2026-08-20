@@ -41,15 +41,15 @@ committee matcher feeds its suggestion straight into the form as a pre-filled fi
 ```js
 const APPLICATION = {
   url: 'https://docs.google.com/forms/d/e/1FAIpQLSdWPb.../viewform',  // SET
-  committeeEntry: ''                                                   // STILL NEEDED
+  teamEntry: ''                                                   // STILL NEEDED
 };
 ```
 
-`url` is set. `committeeEntry` is still empty, so the button opens the form without
+`url` is set. `teamEntry` is still empty, so the button opens the form without
 pre-selecting a committee. Once the form has a committee question, use
 **⋮ → Get pre-filled link** and paste the `entry.NNNNN` number in.
 
-Get `committeeEntry` from the form: **⋮ → Get pre-filled link**, choose any committee, submit,
+Get `teamEntry` from the form: **⋮ → Get pre-filled link**, choose any committee, submit,
 and read the `entry.NNNNN` number out of the URL Google gives you.
 
 While `url` is empty the button falls back to a mailto, so the page is never broken.
@@ -63,7 +63,7 @@ While `url` is empty the button falls back to a mailto, so the page is never bro
 | School | Dropdown | all 18, the old on-site list is in git history if you want to copy it |
 | Expected graduation | Dropdown | 2027–2031, Other |
 | Major / intended field | Short answer | "Undecided" allowed |
-| **Preferred committee** | Multiple choice | Strategy & Client / Data Engineering & Analytics / Marketing / Software Engineering, **this is the pre-filled one** |
+| **Preferred team** | Multiple choice | Strategy & Client Team / Data Engineering & Analysis Team / Marketing & Recruiting Team / Software Development & Cybersecurity Team, **this is the pre-filled one** |
 | Interested in a board seat? | Multiple choice | Not now / Maybe / Yes |
 | Experience with data tools | Multiple choice | None yet → I build things regularly |
 | Hours available per week | Multiple choice | 4–6 default |
@@ -129,10 +129,10 @@ application.
 
 | Track | What it does |
 | --- | --- |
-| **Strategy & Client** | Sources the deals. Pitching, market research, intake, gets the data out of the client, single point of contact. The sales-shaped team. |
-| **Data Engineering & Analytics** | The actual data work, cleaning, pipelines, models, and the answer. |
-| **Marketing** | Growth on campus and off: brand, analyst recruitment, networking events. |
-| **Software Engineering** | What we ship, this website, internal tooling, client-facing builds. |
+| **Strategy & Client** | Market research, networking, outreach to bring clients on board. Single point of contact. Practice for IB, consulting, finance. |
+| **Data Engineering & Analysis** | Collect, clean, organize, analyze. R, Python, SQL, Tableau, Power BI, databases. |
+| **Marketing & Recruiting** | Social media, outreach, graphic design. Speaker webinars, info sessions, networking nights, hackathons. |
+| **Software Development & Cybersecurity** | Front-end, back-end, recruitment and client app infrastructure, protecting client data. |
 
 ### Founding partners vs. board seats
 

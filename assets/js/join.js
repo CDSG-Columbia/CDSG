@@ -63,26 +63,40 @@
      Each interest carries a weight vector across the four tracks:
      [Engineering, Analytics, Strategy, Design]
      ========================================================= */
+  /* The four teams.
+
+     `key`       is what the site displays.
+     `formValue` is sent to the Google Form as a pre-filled answer, so it must
+                 match that question's option text character for character.
+                 If you rename an option in the Form, rename it here too. */
   const TRACKS = [
     { key: 'Strategy & Client',
-      blurb: 'Source the deals and own the client relationship.',
-      detail: 'Build the outreach list, send the cold emails, run the intake call, write the scoping document, and stay the client’s point of contact for twelve weeks.',
-      learn: ['Client sourcing', 'Pitching', 'Market research', 'Scoping'] },
+      formValue: 'Strategy & Client Team',
+      blurb: 'Market research, outreach, and owning the client relationship.',
+      detail: 'Conduct market research, network, and run outreach to bring clients on board. Work with the Data team to gather data from the client, shape the strategy, and deliver the recommendation. You are the client’s main point of contact.',
+      practice: 'Investment banking, consulting, finance',
+      learn: ['Market research', 'Outreach', 'Scoping', 'Financial modeling'] },
 
-    { key: 'Data Engineering & Analytics',
-      blurb: 'Clean it, model it, answer the question.',
-      detail: 'Pull the exports, reconcile the schemas, build the pipeline, fit the model, and write the number you would defend out loud in the client meeting.',
-      learn: ['SQL', 'Python / pandas', 'Forecasting', 'Dashboards'] },
+    { key: 'Data Engineering & Analysis',
+      formValue: 'Data Engineering & Analysis Team',
+      blurb: 'Collect, clean, organize, analyze, and turn it into insight.',
+      detail: 'Collect, clean, organize and analyze client data, then turn it into something someone can act on. You may work directly with databases.',
+      practice: 'Data analytics, data engineering, data science',
+      learn: ['R', 'Python', 'SQL', 'Tableau', 'Power BI'] },
 
-    { key: 'Marketing',
-      blurb: 'Recruitment, brand, and events, on campus and off.',
-      detail: 'Run the activities fair table and the application funnel, write the social and email copy, and produce the networking events.',
-      learn: ['Brand & social', 'Recruitment', 'Events', 'Copywriting'] },
+    { key: 'Marketing & Recruiting',
+      formValue: 'Marketing & Recruiting Team',
+      blurb: 'Grow the club on campus, and run everything we put on.',
+      detail: 'Advertise the club through social media, outreach and graphic design. Run recruitment for each cohort, and produce the events: industry speaker webinars, info sessions, networking nights and hackathons.',
+      practice: 'Marketing, communications, HR',
+      learn: ['Social media', 'Graphic design', 'Event production', 'Recruitment'] },
 
-    { key: 'Software Engineering',
-      blurb: 'This website, internal tools, client-facing builds.',
-      detail: 'Ship this site, the intake and application tooling, and whatever a committee needs built. Code review is part of the job.',
-      learn: ['HTML / CSS / JS', 'Git & deployment', 'APIs', 'UI design'] }
+    { key: 'Software Development & Cybersecurity',
+      formValue: 'Software Development & Cybersecurity Team',
+      blurb: 'Front-end, back-end, and keeping client data safe.',
+      detail: 'Build front-end and back-end tools for clients as needed. Design the infrastructure behind our recruitment and client applications, and do the security work that keeps client data protected.',
+      practice: 'Software engineering, tech, cybersecurity',
+      learn: ['HTML / CSS / JS', 'Java', 'C++', 'Git'] }
   ];
 
   // Weight vectors line up with TRACKS above:
@@ -168,10 +182,11 @@
     tcards.innerHTML = TRACKS.map((t, i) => `
       <div class="cap" data-track="${i}" data-reveal data-delay="${i * .06}">
         <div class="ico"><canvas data-glyph="${['funnel','pipe','broadcast','code'][i]}"></canvas></div>
-        <div class="mono" style="font-size:10px;letter-spacing:.18em;color:var(--text-faint)">COMMITTEE 0${i + 1}</div>
+        <div class="mono" style="font-size:10px;letter-spacing:.18em;color:var(--text-faint)">TEAM 0${i + 1}</div>
         <h3 style="margin-top:10px">${t.key}</h3>
         <p>${t.blurb}</p>
         <div class="chips mt-s">${t.learn.map(l => `<span class="chip">${l}</span>`).join('')}</div>
+        <div class="practice">Practice for ${t.practice}</div>
       </div>`).join('');
     if (window.CDSG_glyphs) window.CDSG_glyphs(tcards);
 
@@ -375,34 +390,37 @@
      STUDENT APPLICATION -> GOOGLE FORM
 
      Paste the form's share link into `url`. To have the matcher's suggested
-     committee arrive pre-selected, open the form, pick "Get pre-filled link",
-     choose any committee, copy the generated URL, and read the `entry.NNNN`
-     number out of it into `committeeEntry`.
+     team arrive pre-selected, open the form, pick "Get pre-filled link",
+     choose any team, copy the generated URL, and read the `entry.NNNN`
+     number out of it into `teamEntry`.
+
+     The value sent is each track's `formValue`, which must match the Form
+     option text exactly.
 
      Leave `url` empty and the button falls back to email, so the page is
      never broken while the form is still being built.
      ========================================================= */
   const APPLICATION = {
     url: 'https://docs.google.com/forms/d/e/1FAIpQLScz4wf3hdG0lP15b31Hs4LRRSD6aywFxheRJivpQ4uXFB2VlA/viewform',
-    committeeEntry: ''       // e.g. 'entry.1234567890'
+    teamEntry: ''       // e.g. 'entry.1234567890'
   };
 
   const applyLink = $('#apply-link');
   const applyNote = $('#apply-note');
   const applyMatch = $('#apply-match');
 
-  function suggestedCommittee() {
-    if (pickedTrack !== null) return TRACKS[pickedTrack].key;
-    if (bestTrack !== null) return TRACKS[bestTrack].key;
-    return '';
+  function suggestedTeam() {
+    const i = pickedTrack !== null ? pickedTrack : bestTrack;
+    if (i === null) return null;
+    return TRACKS[i];
   }
 
   function paintApply() {
     if (!applyLink) return;
-    const committee = suggestedCommittee();
+    const team = suggestedTeam();
 
     if (applyMatch) {
-      applyMatch.textContent = committee ? 'SUGGESTED COMMITTEE \u00b7 ' + committee.toUpperCase() : '';
+      applyMatch.textContent = team ? 'SUGGESTED TEAM \u00b7 ' + team.key.toUpperCase() : '';
     }
 
     if (!APPLICATION.url) {                       // form not built yet
@@ -416,9 +434,9 @@
     }
 
     let href = APPLICATION.url;
-    if (committee && APPLICATION.committeeEntry) {
-      href += (href.includes('?') ? '&' : '?') +
-              'usp=pp_url&' + APPLICATION.committeeEntry + '=' + encodeURIComponent(committee);
+    if (team && APPLICATION.teamEntry) {
+      href += (href.includes('?') ? '&' : '?') + 'usp=pp_url&' +
+              APPLICATION.teamEntry + '=' + encodeURIComponent(team.formValue || team.key);
     }
     applyLink.href = href;
     applyLink.target = '_blank';

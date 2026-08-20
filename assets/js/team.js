@@ -68,24 +68,24 @@ const BOARD = [
     radar: [30, 58, 96, 72, 98]
   },
   {
-    role: 'Director of Data Engineering & Analytics', div: 'Data Engineering & Analytics', open: true,
+    role: 'Director of Data Engineering & Analysis', div: 'Data Engineering & Analysis', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Owns the warehouse schema and the cleaning templates, writes the analysis plan for each engagement, reviews every model, and signs off the numbers before they leave the room.',
-    skills: ['Python', 'SQL', 'Forecasting', 'Causal Inference'],
+    owns: 'Owns the warehouse schema and the cleaning templates, writes the analysis plan for each engagement, reviews every model, and signs off the numbers before they leave the room. Works in R, Python and SQL.',
+    skills: ['R', 'Python', 'SQL', 'Tableau', 'Power BI'],
     radar: [92, 95, 48, 28, 44]
   },
   {
-    role: 'Director of Marketing', div: 'Marketing', open: true,
+    role: 'Director of Marketing & Recruiting', div: 'Marketing & Recruiting', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Runs the activities fair table and the application funnel, writes the social and email copy, and produces the networking events. Owns how many people apply.',
-    skills: ['Brand & Social', 'Recruitment', 'Events', 'Copywriting'],
+    owns: 'Runs the activities fair table and the application funnel, writes the social and email copy, and produces the speaker webinars, info sessions, networking nights and hackathons. Owns how many people apply.',
+    skills: ['Social Media', 'Graphic Design', 'Events', 'Recruitment'],
     radar: [26, 46, 62, 97, 80]
   },
   {
-    role: 'Director of Software Engineering', div: 'Software Engineering', open: true,
+    role: 'Director of Software Development & Cybersecurity', div: 'Software Development & Cybersecurity', open: true,
     name: null, year: null, major: null, bio: null,
-    owns: 'Maintains this site, the intake and application tooling, and the shared repo. Sets code review standards and unblocks committees that need something built.',
-    skills: ['JavaScript', 'Git & Deployment', 'APIs', 'UI Design'],
+    owns: 'Maintains this site and the recruitment and client application infrastructure, owns the security work that protects client data, and sets code review standards.',
+    skills: ['HTML / CSS / JS', 'Java', 'C++', 'Git', 'Security'],
     radar: [93, 56, 40, 48, 36]
   }
 ];

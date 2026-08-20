@@ -874,3 +874,10 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
 
 /* long tool names shouldn't push a chip past the viewport */
 .chip{ max-width:100%; overflow-wrap:anywhere; }
+
+/* career relevance under each team card */
+.practice{
+  margin-top:14px; padding-top:12px; border-top:1px solid var(--line);
+  font-family:var(--font-mono); font-size:9.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--text-faint); line-height:1.7;
+}
