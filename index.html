@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Columbia Data &amp; Strategy Group</title>
+<meta name="description" content="A new student consulting group forming at Columbia University — built to turn raw business data from across New York City into decisions worth making. Founding cohort recruiting now.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b12'/%3E%3Ccircle cx='16' cy='7' r='2.4' fill='%2338CDFF'/%3E%3Ccircle cx='7' cy='20' r='2.4' fill='%233AE8C8'/%3E%3Ccircle cx='25' cy='18' r='2.4' fill='%2338CDFF'/%3E%3Ccircle cx='16' cy='27' r='2.4' fill='%23A67CFF'/%3E%3Cg stroke='%2338CDFF' stroke-width='1.1' opacity='.65'%3E%3Cpath d='M16 7 7 20M16 7l9 11M7 20l9 7M25 18l-9 9'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div class="bg-field"></div>
+<div class="grain"></div>
+<div class="scroll-rail"><div class="scroll-bar"></div></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><canvas></canvas></span>
+      <span class="brand-txt"><b>Data &amp; Strategy</b><span>Columbia University</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">What We Do</a>
+      <a href="team.html">Executive Board</a>
+      <a href="projects.html">Projects</a>
+      <a href="join.html">Get Involved</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="apply-menu">
+        <a class="btn btn-sm btn-primary" href="join.html">Apply <span class="caret">▼</span></a>
+        <div class="apply-pop">
+          <a href="join.html#students"><b>Join as an analyst</b><small>Columbia students</small><span class="go2">→</span></a>
+          <div class="sep"></div>
+          <a href="join.html#business"><b>Bring us your data</b><small>Businesses &amp; nonprofits</small><span class="go2">→</span></a>
+        </div>
+      </div>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Home <i>01</i></a>
+  <a href="about.html">What We Do <i>02</i></a>
+  <a href="team.html">Executive Board <i>03</i></a>
+  <a href="projects.html">Projects <i>04</i></a>
+  <a href="join.html#students">Join as an analyst <i>05</i></a>
+  <a href="join.html#business">Bring us your data <i>06</i></a>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <canvas id="hero-net"></canvas>
+    <div class="wrap">
+      <div class="eyebrow" style="animation:fadeUp .8s .5s both"><span class="dot"></span> Columbia University &nbsp;·&nbsp; Founding cohort, Fall 2026</div>
+
+      <h1 class="hero-title">
+        <span class="line"><span>Data <em style="font-style:normal" class="grad-text">&amp;</em> Strategy</span></span>
+        <span class="line"><span class="grad-text">Group</span></span>
+      </h1>
+
+      <p class="lead mt-m" style="animation:fadeUp .9s .75s both; max-width:54ch">
+        A new student consultancy forming at Columbia. We're building it to do one thing well:
+        take the messy, half-recorded, spreadsheet-scattered data of New York City businesses
+        &mdash; and turn it into decisions worth making.
+      </p>
+
+      <div class="flex gap-m wrapf mt-m" style="animation:fadeUp .9s .9s both">
+        <a href="join.html" class="btn btn-primary" data-magnetic>Get involved <span class="arrow">→</span></a>
+        <a href="about.html" class="btn btn-ghost">See how it works</a>
+      </div>
+
+      <div class="hero-meta mt-l" style="animation:fadeUp .9s 1.05s both">
+        <span>Morningside Heights, NY</span>
+        <span>Collect · Clean · Organize · Analyze · Optimize</span>
+        <span id="clock">--:--:--</span>
+      </div>
+    </div>
+    <div class="scroll-hint"><i></i> Scroll</div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><b>Founding cohort</b> — recruiting now</span>
+      <span class="ticker-item"><b>First client slots</b> — open</span>
+      <span class="ticker-item"><b>No experience</b> required</span>
+      <span class="ticker-item"><b>All five</b> boroughs</span>
+      <span class="ticker-item"><b>Pro bono</b> for nonprofits</span>
+      <span class="ticker-item"><b>Fall 2026</b> — first engagements</span>
+    </div>
+  </div>
+
+  <!-- ============ PORTALS ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Navigate</div>
+          <h2 class="h2">Four ways in.</h2>
+        </div>
+        <p class="lead" style="max-width:36ch">
+          Everything else lives one click away. Pick a thread and pull.
+        </p>
+      </div>
+
+      <div class="portals">
+        <a class="portal" href="about.html" data-reveal data-dir="scale" data-tilt="6">
+          <span class="idx">01 / METHOD</span>
+          <h3>What&nbsp;We&nbsp;Do</h3>
+          <p>The five-stage pipeline every engagement will run through.</p>
+          <canvas class="viz" data-viz="pipeline"></canvas>
+          <span class="go">↗</span>
+        </a>
+
+        <a class="portal" href="team.html" data-reveal data-dir="scale" data-delay=".08" data-tilt="6">
+          <span class="idx">02 / PEOPLE</span>
+          <h3>Executive Board</h3>
+          <p>The founding team &mdash; and the seats still open.</p>
+          <canvas class="viz" data-viz="network"></canvas>
+          <span class="go">↗</span>
+        </a>
+
+        <a class="portal" href="projects.html" data-reveal data-dir="scale" data-delay=".16" data-tilt="6">
+          <span class="idx">03 / WORK</span>
+          <h3>Projects</h3>
+          <p>No case studies yet. Here's what we're built to take on.</p>
+          <canvas class="viz" data-viz="bars"></canvas>
+          <span class="go">↗</span>
+        </a>
+
+        <a class="portal" href="join.html" data-reveal data-dir="scale" data-delay=".24" data-tilt="6">
+          <span class="idx">04 / ENTRY</span>
+          <h3>Get Involved</h3>
+          <p>Two doors: join as an analyst, or bring us your data.</p>
+          <canvas class="viz" data-viz="scatter"></canvas>
+          <span class="go">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HONEST STATUS ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Status</div>
+          <h2 class="h2">Where we actually are.</h2>
+        </div>
+        <p class="lead" style="max-width:38ch">
+          We'd rather show you an empty shelf than a fake one.
+        </p>
+      </div>
+
+      <div class="stat-grid" data-reveal>
+        <div class="stat"><div class="num">2026</div><div class="lbl">Founded</div></div>
+        <div class="stat"><div class="num">0</div><div class="lbl">Engagements completed</div></div>
+        <div class="stat"><div class="num">Fall&nbsp;’26</div><div class="lbl">First cohort starts</div></div>
+        <div class="stat"><div class="num">Open</div><div class="lbl">Analyst &amp; client applications</div></div>
+      </div>
+
+      <div class="note mt-m" data-reveal>
+        <span class="k">Straight&nbsp;up</span>
+        <div>
+          We haven't run an engagement yet. There is no track record to point at, no client list, no
+          alumni network. What there is: a method we believe in, a founding team being assembled right now,
+          and a city full of businesses sitting on data nobody has had time to open. If you'd rather
+          build the thing than join the thing, this is the moment.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TWO DOORS ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Two doors</div>
+          <h2 class="h2">Which one are you?</h2>
+        </div>
+      </div>
+
+      <div class="path-grid" data-reveal>
+        <a class="path" href="join.html#students">
+          <canvas data-viz="scatter"></canvas>
+          <span class="mark">→</span>
+          <span class="k">DOOR 01 · STUDENTS</span>
+          <h3>Join as an analyst</h3>
+          <p>Founding cohort, four tracks, no experience required. You'd be shaping how this group works, not inheriting it.</p>
+          <div class="chips mt-s"><span class="pill">Applications open</span></div>
+        </a>
+
+        <a class="path" href="join.html#business">
+          <canvas data-viz="pipeline"></canvas>
+          <span class="mark">→</span>
+          <span class="k">DOOR 02 · BUSINESSES</span>
+          <h3>Bring us your data</h3>
+          <p>A team of Columbia students, one semester, one question you've never had time to answer. Free while we're getting started.</p>
+          <div class="chips mt-s"><span class="pill">Pilot slots open</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section-tight" style="padding-bottom:clamp(72px,10vw,140px)">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <canvas id="cta-net"></canvas>
+        <div class="eyebrow" style="justify-content:center"><span class="dot"></span> Founding cohort · Fall 2026</div>
+        <h2 class="h2">Bring us a question.<br><span class="grad-text">We&rsquo;ll go find the evidence.</span></h2>
+        <p class="lead mx-auto center mt-s" style="max-width:50ch">
+          Whether you're a student who wants to build something from zero, or a business sitting on
+          data you've never had time to look at &mdash; start here.
+        </p>
+        <div class="flex gap-m mt-m" style="justify-content:center; flex-wrap:wrap">
+          <a href="join.html#students" class="btn btn-primary" data-magnetic>Join as an analyst <span class="arrow">→</span></a>
+          <a href="join.html#business" class="btn btn-ghost">Bring us your data</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:16px">
+          <span class="brand-mark"><canvas></canvas></span>
+          <span class="brand-txt"><b>Data &amp; Strategy</b><span>Columbia University</span></span>
+        </a>
+        <p class="muted" style="font-size:.88rem; max-width:34ch">
+          A student-run analytics and strategy group forming at Columbia University, built to serve
+          small and mid-sized businesses across New York City.
+        </p>
+        <div class="mt-s"><span class="pill grey">Founding stage · Fall 2026</span></div>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <a href="about.html">What We Do</a>
+        <a href="team.html">Executive Board</a>
+        <a href="projects.html">Projects</a>
+        <a href="join.html#students">Join as an analyst</a>
+        <a href="join.html#business">Bring us your data</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:datastrategy@columbia.edu">datastrategy@columbia.edu</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">GitHub</a>
+      </div>
+      <div>
+        <h5>Find us</h5>
+        <p class="muted" style="font-size:.88rem">
+          Columbia University<br>New York, NY 10027
+        </p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year></span> Columbia Data &amp; Strategy Group</span>
+      <span>Student organization · Not an official University publication</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/core.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

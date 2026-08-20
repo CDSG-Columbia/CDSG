@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Board — Columbia Data &amp; Strategy Group</title>
+<meta name="description" content="The founding executive board of Columbia Data &amp; Strategy Group — the seats we're filling and what each one owns.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b12'/%3E%3Ccircle cx='16' cy='7' r='2.4' fill='%2338CDFF'/%3E%3Ccircle cx='7' cy='20' r='2.4' fill='%233AE8C8'/%3E%3Ccircle cx='25' cy='18' r='2.4' fill='%2338CDFF'/%3E%3Ccircle cx='16' cy='27' r='2.4' fill='%23A67CFF'/%3E%3Cg stroke='%2338CDFF' stroke-width='1.1' opacity='.65'%3E%3Cpath d='M16 7 7 20M16 7l9 11M7 20l9 7M25 18l-9 9'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div class="bg-field"></div>
+<div class="grain"></div>
+<div class="scroll-rail"><div class="scroll-bar"></div></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><canvas></canvas></span>
+      <span class="brand-txt"><b>Data &amp; Strategy</b><span>Columbia University</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">What We Do</a>
+      <a href="team.html" class="active">Executive Board</a>
+      <a href="projects.html">Projects</a>
+      <a href="join.html">Get Involved</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="apply-menu">
+        <a class="btn btn-sm btn-primary" href="join.html">Apply <span class="caret">▼</span></a>
+        <div class="apply-pop">
+          <a href="join.html#students"><b>Join as an analyst</b><small>Columbia students</small><span class="go2">→</span></a>
+          <div class="sep"></div>
+          <a href="join.html#business"><b>Bring us your data</b><small>Businesses &amp; nonprofits</small><span class="go2">→</span></a>
+        </div>
+      </div>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Home <i>01</i></a>
+  <a href="about.html">What We Do <i>02</i></a>
+  <a href="team.html">Executive Board <i>03</i></a>
+  <a href="projects.html">Projects <i>04</i></a>
+  <a href="join.html#students">Join as an analyst <i>05</i></a>
+  <a href="join.html#business">Bring us your data <i>06</i></a>
+</div>
+
+<main>
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a><i>/</i>Executive Board</div>
+      <h1 data-reveal>The board<br><span class="grad-text">we&rsquo;re building.</span></h1>
+      <p class="lead mt-m" data-reveal data-delay=".12">
+        Eight seats across leadership, engineering, analytics, client strategy, and operations.
+        We're assembling them right now &mdash; so what you'll find below is a description of each
+        seat and what it owns, not a photo wall of people who haven't done anything yet.
+        <span class="faint">Click any seat for the full remit.</span>
+      </p>
+      <div class="mt-m" id="seat-count" data-reveal data-delay=".18"></div>
+    </div>
+  </section>
+
+  <!-- ============ TARGET COVERAGE ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="split" style="align-items:center">
+        <div data-reveal data-dir="left">
+          <div class="eyebrow"><span class="dot"></span> Board design</div>
+          <h2 class="h2" style="font-size:clamp(1.6rem,3vw,2.4rem)">Coverage across<br>the five competencies.</h2>
+          <p class="lead mt-s" style="font-size:1rem">
+            The board isn't eight versions of the same person. Each seat is weighted toward a
+            different competency so that any project team we assemble covers all five.
+            Hover a spoke to see which seats carry it.
+          </p>
+          <div class="chips mt-s" id="coverage-chips"></div>
+        </div>
+        <div class="card" style="padding:26px" data-reveal data-dir="right">
+          <div class="radar-wrap" id="board-radar"></div>
+          <div class="center mono faint" style="font-size:10px; letter-spacing:.16em; margin-top:6px">TARGET COVERAGE ACROSS ALL EIGHT SEATS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOARD GRID ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Founding board</div>
+          <h2 class="h2">The seats</h2>
+        </div>
+        <div class="filters" id="div-filters" style="margin:0"></div>
+      </div>
+      <div class="team-grid" id="team-grid"></div>
+
+      <div class="note mt-m" data-reveal>
+        <span class="k">Why&nbsp;empty</span>
+        <div>
+          We could have put names and headshots here on day one. We'd rather the page be accurate:
+          these seats are genuinely open, and the people who take them will define how this group
+          works rather than inherit a system someone else built.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW THE BOARD RUNS ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> How it runs</div>
+          <h2 class="h2">What being on this board means.</h2>
+        </div>
+      </div>
+      <div class="cap-grid">
+        <div class="cap" data-reveal>
+          <div class="ico">🧭</div>
+          <h3>You set the precedent</h3>
+          <p>There is no "how we've always done it." The first board writes the scoping template, the QA bar, and the client agreement — and then lives with them.</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".06">
+          <div class="ico">🤝</div>
+          <h3>You carry a client</h3>
+          <p>Every board member sits on at least one engagement. This isn't an oversight role; it's a working one.</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".12">
+          <div class="ico">📣</div>
+          <h3>You recruit</h3>
+          <p>The founding board is also the founding sales and recruitment team. Getting the first client and the first cohort is the job in year one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section-tight" style="padding-bottom:clamp(72px,10vw,140px)">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <canvas id="cta-net"></canvas>
+        <div class="eyebrow" style="justify-content:center"><span class="dot"></span> Founding board · applications open</div>
+        <h2 class="h2">Want a seat<br><span class="grad-text">at an empty table?</span></h2>
+        <p class="lead mx-auto center mt-s" style="max-width:48ch">
+          Founding roles go to people who show up early. Tell us which seat you want and why.
+        </p>
+        <div class="flex gap-m mt-m" style="justify-content:center; flex-wrap:wrap">
+          <a href="join.html#students" class="btn btn-primary" data-magnetic>Apply for a seat <span class="arrow">→</span></a>
+          <a href="about.html" class="btn btn-ghost">See the method first</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ DRAWER ============ -->
+<div class="drawer-scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawer-close" aria-label="Close">✕</button>
+  <div id="drawer-body"></div>
+</aside>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:16px">
+          <span class="brand-mark"><canvas></canvas></span>
+          <span class="brand-txt"><b>Data &amp; Strategy</b><span>Columbia University</span></span>
+        </a>
+        <p class="muted" style="font-size:.88rem; max-width:34ch">A student-run analytics and strategy group forming at Columbia University, built to serve small and mid-sized businesses across New York City.</p>
+        <div class="mt-s"><span class="pill grey">Founding stage · Fall 2026</span></div>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <a href="about.html">What We Do</a><a href="team.html">Executive Board</a><a href="projects.html">Projects</a>
+        <a href="join.html#students">Join as an analyst</a><a href="join.html#business">Bring us your data</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:datastrategy@columbia.edu">datastrategy@columbia.edu</a><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">GitHub</a>
+      </div>
+      <div>
+        <h5>Find us</h5>
+        <p class="muted" style="font-size:.88rem">Columbia University<br>New York, NY 10027</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year></span> Columbia Data &amp; Strategy Group</span>
+      <span>Student organization · Not an official University publication</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/core.js"></script>
+<script src="assets/js/team.js"></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What We Do — Columbia Data &amp; Strategy Group</title>
+<meta name="description" content="Collect, clean, organize, analyze, optimize. The five-stage method Columbia Data &amp; Strategy Group is built to run on data from NYC businesses.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b12'/%3E%3Ccircle cx='16' cy='7' r='2.4' fill='%2338CDFF'/%3E%3Ccircle cx='7' cy='20' r='2.4' fill='%233AE8C8'/%3E%3Ccircle cx='25' cy='18' r='2.4' fill='%2338CDFF'/%3E%3Ccircle cx='16' cy='27' r='2.4' fill='%23A67CFF'/%3E%3Cg stroke='%2338CDFF' stroke-width='1.1' opacity='.65'%3E%3Cpath d='M16 7 7 20M16 7l9 11M7 20l9 7M25 18l-9 9'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div class="bg-field"></div>
+<div class="grain"></div>
+<div class="scroll-rail"><div class="scroll-bar"></div></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><canvas></canvas></span>
+      <span class="brand-txt"><b>Data &amp; Strategy</b><span>Columbia University</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">What We Do</a>
+      <a href="team.html">Executive Board</a>
+      <a href="projects.html">Projects</a>
+      <a href="join.html">Get Involved</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="apply-menu">
+        <a class="btn btn-sm btn-primary" href="join.html">Apply <span class="caret">▼</span></a>
+        <div class="apply-pop">
+          <a href="join.html#students"><b>Join as an analyst</b><small>Columbia students</small><span class="go2">→</span></a>
+          <div class="sep"></div>
+          <a href="join.html#business"><b>Bring us your data</b><small>Businesses &amp; nonprofits</small><span class="go2">→</span></a>
+        </div>
+      </div>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Home <i>01</i></a>
+  <a href="about.html">What We Do <i>02</i></a>
+  <a href="team.html">Executive Board <i>03</i></a>
+  <a href="projects.html">Projects <i>04</i></a>
+  <a href="join.html#students">Join as an analyst <i>05</i></a>
+  <a href="join.html#business">Bring us your data <i>06</i></a>
+</div>
+
+<main>
+
+  <!-- ============ HEADER ============ -->
+  <section class="page-head">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a><i>/</i>What We Do</div>
+      <h1 data-reveal>Most businesses aren&rsquo;t<br>short on data.<br><span class="grad-text">They&rsquo;re short on time<br>to look at it.</span></h1>
+      <p class="lead mt-m" data-reveal data-delay=".15">
+        Columbia Data &amp; Strategy Group is a student-run consultancy forming now. The plan is
+        narrow on purpose: work with businesses across New York City &mdash; restaurants, retailers,
+        clinics, studios, nonprofits, small logistics operators &mdash; and take on the part nobody
+        has bandwidth for. Getting the numbers into a state where they can answer a real question.
+      </p>
+      <div class="mt-m" data-reveal data-delay=".22">
+        <span class="pill">Founding stage · first engagements Fall 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PIPELINE ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> The Pipeline · Interactive</div>
+          <h2 class="h2">Five stages, one dataset.</h2>
+        </div>
+        <p class="lead" style="max-width:34ch">
+          Click through a stage to watch 240 records move from raw intake
+          to an optimized recommendation.
+        </p>
+      </div>
+
+      <div class="pipeline" data-reveal>
+        <div class="stage-list" id="stages">
+          <button class="stage-btn active" data-stage="0">
+            <span class="k">STAGE 01</span>
+            <span class="t">Collect</span>
+            <span class="d">POS exports, scheduling logs, inventory sheets, foot-traffic counts, invoices. We pull it all in, however it arrives.</span>
+          </button>
+          <button class="stage-btn" data-stage="1">
+            <span class="k">STAGE 02</span>
+            <span class="t">Clean</span>
+            <span class="d">Deduplicate, normalize formats, reconcile names, resolve nulls, flag and handle outliers. The unglamorous 60%.</span>
+          </button>
+          <button class="stage-btn" data-stage="2">
+            <span class="k">STAGE 03</span>
+            <span class="t">Organize</span>
+            <span class="d">Structure into a queryable schema — joined tables, consistent keys, a documented dictionary the client keeps.</span>
+          </button>
+          <button class="stage-btn" data-stage="3">
+            <span class="k">STAGE 04</span>
+            <span class="t">Analyze</span>
+            <span class="d">Segment, correlate, model, forecast. We test the hypotheses the owner has been carrying around in their head.</span>
+          </button>
+          <button class="stage-btn" data-stage="4">
+            <span class="k">STAGE 05</span>
+            <span class="t">Optimize</span>
+            <span class="d">Translate the finding into a decision: this shift, this price, this supplier, this hour. Then measure whether it worked.</span>
+          </button>
+        </div>
+
+        <div class="stage-canvas-wrap">
+          <div class="stage-readout">
+            <span>DATASET · <b id="ro-name">raw_intake.csv</b></span>
+            <span>N = <b id="ro-n">240</b> · USABLE <b id="ro-q">31%</b></span>
+          </div>
+          <canvas id="pipeline-canvas"></canvas>
+          <div class="stage-progress" id="stage-prog" style="width:20%"></div>
+        </div>
+      </div>
+
+      <div class="note mt-m" data-reveal>
+        <span class="k">Demo</span>
+        <div>Synthetic data, generated in your browser. It's here to show what each stage does to a dataset &mdash; it isn't from a client, because we don't have one yet.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLEANING DEMO ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Stage 02, up close</div>
+          <h2 class="h2">What &ldquo;cleaning&rdquo;<br>actually means.</h2>
+        </div>
+        <button class="btn btn-sm" id="clean-toggle" data-magnetic>Run cleaning pass <span class="arrow">→</span></button>
+      </div>
+
+      <div class="clean-demo" data-reveal>
+        <div>
+          <div class="mono faint" style="font-size:10px; letter-spacing:.2em; margin-bottom:10px">BEFORE — 6 ROWS SAMPLED</div>
+          <div class="dtable dirty" id="tbl-before">
+            <div class="hd"><span>Vendor</span><span>Date</span><span>Amount</span></div>
+          </div>
+        </div>
+
+        <div class="clean-arrow">
+          <span>Normalize</span>
+          <span class="ln"></span>
+          <span>Dedupe</span>
+        </div>
+
+        <div>
+          <div class="mono faint" style="font-size:10px; letter-spacing:.2em; margin-bottom:10px">AFTER — CANONICAL</div>
+          <div class="dtable clean" id="tbl-after">
+            <div class="hd"><span>Vendor</span><span>Date</span><span>Amount</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-m wrapf mt-m" data-reveal>
+        <span class="chip">4 date formats → ISO-8601</span>
+        <span class="chip">"Hudson Sply" ≈ "Hudson Supply Co."</span>
+        <span class="chip">2 duplicate invoices removed</span>
+        <span class="chip">1 null amount imputed &amp; flagged</span>
+        <span class="chip">Currency strings → numeric</span>
+      </div>
+
+      <p class="faint mt-s" style="font-size:.82rem" data-reveal>Example rows, written to illustrate the failure modes we expect to find.</p>
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITIES ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Capabilities</div>
+          <h2 class="h2">What a team can take on.</h2>
+        </div>
+        <p class="lead" style="max-width:34ch">
+          Scoped to what four to six students can genuinely deliver in a semester &mdash; not a
+          consulting brochure.
+        </p>
+      </div>
+
+      <div class="cap-grid">
+        <div class="cap" data-reveal>
+          <div class="ico">🗂️</div>
+          <h3>Data Infrastructure</h3>
+          <p>Consolidating scattered exports into a single source of truth — a schema you can keep querying long after we leave.</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".06">
+          <div class="ico">🔍</div>
+          <h3>Diagnostic Analysis</h3>
+          <p>Cohort and segment breakdowns, margin decomposition, churn drivers, and the boring-but-critical "where is the money actually going."</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".12">
+          <div class="ico">📈</div>
+          <h3>Forecasting</h3>
+          <p>Demand, staffing, and inventory projections built on your own seasonality — not an industry average that doesn't fit you.</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".18">
+          <div class="ico">⚙️</div>
+          <h3>Operations Optimization</h3>
+          <p>Scheduling, routing, prep timing, reorder points. Small structural changes that compound across a year.</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".24">
+          <div class="ico">🎯</div>
+          <h3>Strategy &amp; Positioning</h3>
+          <p>Competitive scans, pricing tests, and market sizing scoped to a few blocks of New York rather than a national report.</p>
+        </div>
+        <div class="cap" data-reveal data-delay=".3">
+          <div class="ico">📊</div>
+          <h3>Dashboards &amp; Handoff</h3>
+          <p>Live dashboards, documentation, and a walkthrough so the answer stays usable once the semester ends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENGAGEMENT MODEL ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div data-reveal data-dir="left">
+          <div class="eyebrow"><span class="dot"></span> Engagement model</div>
+          <h2 class="h2">One semester.<br>One question.<br>One answer you can act on.</h2>
+          <p class="lead mt-m">
+            Every engagement is designed to run on a fixed twelve-week arc with a four-to-six person
+            team and a named client contact. We scope narrow on purpose &mdash; a single well-answered
+            question beats five half-answered ones, and it's the only honest promise a student team
+            can make.
+          </p>
+          <div class="flex gap-m wrapf mt-m">
+            <a href="join.html#business" class="btn" data-magnetic>Be a first client <span class="arrow">→</span></a>
+            <a href="projects.html" class="btn btn-ghost">See example briefs</a>
+          </div>
+        </div>
+
+        <div class="stack" data-reveal data-dir="right">
+          <div class="card" style="padding:24px">
+            <div class="mono" style="font-size:10px; letter-spacing:.2em; color:var(--neon)">WEEKS 1–2</div>
+            <h3 class="mt-s" style="font-size:1.14rem">Scoping &amp; data audit</h3>
+            <p class="muted" style="font-size:.88rem; margin-top:8px">We sit with you, define the decision you're trying to make, and inventory what data actually exists.</p>
+          </div>
+          <div class="card" style="padding:24px">
+            <div class="mono" style="font-size:10px; letter-spacing:.2em; color:var(--neon)">WEEKS 3–7</div>
+            <h3 class="mt-s" style="font-size:1.14rem">Build &amp; analyze</h3>
+            <p class="muted" style="font-size:.88rem; margin-top:8px">Cleaning, pipeline construction, and the analysis itself — with a checkpoint every two weeks so nothing drifts.</p>
+          </div>
+          <div class="card" style="padding:24px">
+            <div class="mono" style="font-size:10px; letter-spacing:.2em; color:var(--neon)">WEEKS 8–12</div>
+            <h3 class="mt-s" style="font-size:1.14rem">Recommend &amp; hand off</h3>
+            <p class="muted" style="font-size:.88rem; margin-top:8px">Final deck, live dashboard, documented pipeline, and a follow-up to check whether the change held.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section-tight" style="padding-bottom:clamp(72px,10vw,140px)">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <canvas id="cta-net"></canvas>
+        <h2 class="h2">Sitting on data you&rsquo;ve<br>never had time to open?</h2>
+        <p class="lead mx-auto center mt-s" style="max-width:48ch">
+          We're looking for our first clients. Free while we're getting started, and permanently
+          pro bono for nonprofits.
+        </p>
+        <div class="flex gap-m mt-m" style="justify-content:center; flex-wrap:wrap">
+          <a href="join.html#business" class="btn btn-primary" data-magnetic>Bring us your data <span class="arrow">→</span></a>
+          <a href="join.html#students" class="btn btn-ghost">Join as an analyst</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:16px">
+          <span class="brand-mark"><canvas></canvas></span>
+          <span class="brand-txt"><b>Data &amp; Strategy</b><span>Columbia University</span></span>
+        </a>
+        <p class="muted" style="font-size:.88rem; max-width:34ch">A student-run analytics and strategy group forming at Columbia University, built to serve small and mid-sized businesses across New York City.</p>
+        <div class="mt-s"><span class="pill grey">Founding stage · Fall 2026</span></div>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <a href="about.html">What We Do</a><a href="team.html">Executive Board</a><a href="projects.html">Projects</a>
+        <a href="join.html#students">Join as an analyst</a><a href="join.html#business">Bring us your data</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:datastrategy@columbia.edu">datastrategy@columbia.edu</a><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">GitHub</a>
+      </div>
+      <div>
+        <h5>Find us</h5>
+        <p class="muted" style="font-size:.88rem">Columbia University<br>New York, NY 10027</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year></span> Columbia Data &amp; Strategy Group</span>
+      <span>Student organization · Not an official University publication</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/core.js"></script>
+<script src="assets/js/about.js"></script>
+</body>
+</html>
