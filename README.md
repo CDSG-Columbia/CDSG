@@ -1,4 +1,4 @@
-# Columbia Data & Strategy Group, website
+# Data & Strategy Group at Columbia University, website
 
 Static site. No build step, no dependencies, no framework. Open `index.html` in a browser
 and it works.
@@ -20,6 +20,23 @@ cdsg-site/
         ├── projects.js ← EXAMPLE BRIEFS LIVE HERE
         └── join.js     Path switching + both multi-step forms
 ```
+
+## Logo assets
+
+`assets/img/` holds three files cut from `Club Logo Option 1.png`:
+
+| File | Use |
+| --- | --- |
+| `logo-mark.png` | 256px circular emblem only, transparent. This is what sits in the nav and footer. |
+| `favicon.png` | 64px version of the same, used as the tab icon. |
+| `logo-full.png` | the full lockup including the wordmark, kept for slides, posters and social. Not used on the site. |
+
+Transparency was made by taking alpha from luminance, which works because the
+artwork is light on pure black. If you re-export the logo, keep that black
+background and the same script will work again.
+
+The wordmark is deliberately not part of the small mark: the site sets it in
+live text next to the emblem, which stays sharp at any size and is selectable.
 
 ## Run it locally
 

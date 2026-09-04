@@ -385,29 +385,6 @@
   }
   window.CDSG_sparkline = sparkline;
 
-  /* =========================================================
-     Brand mark, tiny live node cluster in the logo
-     ========================================================= */
-  $$('.brand-mark canvas').forEach(cv => {
-    const nodes = [[.5, .18], [.2, .5], [.8, .46], [.36, .82], [.72, .8]];
-    makeCanvas(cv, (ctx, w, h, t) => {
-      ctx.clearRect(0, 0, w, h);
-      ctx.strokeStyle = `rgba(${C.blue},.5)`; ctx.lineWidth = .8;
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i][0] * w, nodes[i][1] * h);
-          ctx.lineTo(nodes[j][0] * w, nodes[j][1] * h);
-          ctx.stroke();
-        }
-      }
-      nodes.forEach((n, i) => {
-        const a = .5 + Math.sin(t / 26 + i * 1.3) * .45;
-        ctx.fillStyle = i % 2 ? `rgba(${C.mint},${a})` : `rgba(${C.blue},${a})`;
-        ctx.beginPath(); ctx.arc(n[0] * w, n[1] * h, 1.9, 0, 7); ctx.fill();
-      });
-    });
-  });
 
 
   /* =========================================================
