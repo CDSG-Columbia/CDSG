@@ -133,17 +133,7 @@ application.
 | **Marketing & Recruiting** | Social media, outreach, graphic design. Speaker webinars, info sessions, networking nights, hackathons. |
 | **Software Development & Cybersecurity** | Front-end, back-end, recruitment and client app infrastructure, protecting client data. |
 
-### Founding partners vs. board seats
-
-Two separate things, deliberately:
-
-* **`FOUNDERS`** in `team.js`, three people, permanent designation, never re-elected.
-  Renders as a violet strip above the board. Add a `name` to replace the placeholder;
-  add a `bio` too and the card becomes clickable.
-* **`BOARD`** in `team.js`, six seats, all currently open, filled on merit and rotating.
-  A founder can also hold a seat; the seat just isn't automatically theirs.
-
-The six board seats map onto the tracks:
+The six board seats in `team.js` map onto the tracks:
 
 | Seat | Division |
 | --- | --- |

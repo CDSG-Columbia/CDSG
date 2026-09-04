@@ -770,35 +770,11 @@ footer{ border-top:1px solid var(--line); padding:56px 0 34px; position:relative
 /* recruitment timeline: titles only */
 .timeline .tl h4{ margin:8px 0 0; }
 
-/* ---------- Founding partners (violet, to read apart from the board) ---------- */
-.founders{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.founder{
-  display:flex; align-items:center; gap:16px; padding:20px 22px; border-radius:var(--r-lg);
-  border:1px solid var(--line);
-  background:linear-gradient(160deg,rgba(166,124,255,.08),rgba(255,255,255,.012));
-  transition:transform .4s var(--ease), border-color .4s var(--ease);
-}
-.founder.has-bio{ cursor:pointer; }
-.founder:hover{ transform:translateY(-3px); border-color:rgba(166,124,255,.45); }
-.founder .f-av{
-  width:52px; height:52px; border-radius:15px; flex:none; display:grid; place-items:center;
-  font-family:var(--font-display); font-size:1.15rem; letter-spacing:-.02em; color:#fff;
-  border:1px solid rgba(166,124,255,.4); background:rgba(166,124,255,.14);
-}
-.founder .f-lbl{
-  font-family:var(--font-mono); font-size:9px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--violet);
-}
-.founder h4{ font-family:var(--font-display); font-size:1.05rem; margin:5px 0 3px; }
-.founder .f-sub{ font-size:.8rem; color:var(--text-faint); }
 
-@media (max-width:900px){ .founders{ grid-template-columns:1fr; } }
-
-/* a founder whose name isn't public yet: live gibberish, monospaced */
-.founder h4.f-name{ min-height:1.15em; }
-.f-name.scram{
-  font-family:var(--font-mono); font-size:.92rem; font-weight:400;
-  color:var(--text-faint); letter-spacing:.06em;
+/* a filled seat whose holder isn't public yet: live gibberish, monospaced */
+.member-body h3.scram{
+  font-family:var(--font-mono); font-size:.9rem; font-weight:400;
+  color:var(--text-faint); letter-spacing:.06em; min-height:1.2em;
 }
 
 /* ---------- "what you'll need" list ---------- */

@@ -25,36 +25,16 @@
    `div` doubles as the filter chip on the page, and maps onto the four
    member tracks (plus Leadership and Operations, which sit above them).
    ========================================================= */
-/* =========================================================
-   FOUNDING PARTNERS
-
-   Separate from the board on purpose. "Founding Partner" is a
-   permanent designation and is never re-elected; the six board
-   seats below rotate and are filled on merit. A founder can of
-   course also hold a board seat.
-
-   Add a name and it replaces the placeholder automatically:
-
-       { name: 'Real Name', year: 'CC \u201927', major: 'Economics' }
-
-   Add a `bio` too and the card becomes clickable.
-   ========================================================= */
-const FOUNDERS = [
-  { name: null, year: null, major: null, bio: null },
-  { name: null, year: null, major: null, bio: null },
-  { name: null, year: null, major: null, bio: null }
-];
-
 const BOARD = [
   {
-    role: 'President', div: 'Leadership', open: true,
+    role: 'President', div: 'Leadership', open: false,
     name: null, year: null, major: null, bio: null,
     owns: 'Chairs the weekly scoping review, signs off which clients we take, and settles scope disputes. Owns the relationship with the student governing board and the group’s budget request.',
     skills: ['Client Strategy', 'Scoping', 'SQL', 'Financial Modeling'],
     radar: [45, 72, 95, 66, 92]
   },
   {
-    role: 'Vice President', div: 'Leadership', open: true,
+    role: 'Vice President', div: 'Leadership', open: false,
     name: null, year: null, major: null, bio: null,
     owns: 'Assigns analysts to committees, holds the checkpoint calendar, and reads every deliverable before a client does. Steps in when a committee falls behind.',
     skills: ['Staffing', 'Process Design', 'Project Management', 'Python'],
@@ -75,7 +55,7 @@ const BOARD = [
     radar: [92, 95, 48, 28, 44]
   },
   {
-    role: 'Director of Marketing & Recruiting', div: 'Marketing & Recruiting', open: true,
+    role: 'Director of Marketing & Recruiting', div: 'Marketing & Recruiting', open: false,
     name: null, year: null, major: null, bio: null,
     owns: 'Runs the activities fair table and the application funnel, writes the social and email copy, and produces the speaker webinars, info sessions, networking nights and hackathons. Owns how many people apply.',
     skills: ['Social Media', 'Graphic Design', 'Events', 'Recruitment'],
@@ -224,8 +204,9 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
     `<span class="pill">${openCount} of ${BOARD.length} seats open</span>`;
 
   /* ---------------- Unrevealed names ----------------
-     A founder with no `name` yet renders as live gibberish rather than a
-     "to be announced" label. Add the name and this stops entirely. */
+     A filled seat whose holder we haven't published yet renders as live
+     gibberish rather than a flat "to be announced". Add the name to that
+     seat in BOARD and this stops entirely. */
   function scramble(el, len) {
     const G = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*<>/{}[]?$@';
     const roll = () => {
@@ -243,42 +224,6 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
       if (++f % 5 === 0) roll();          // ~12 changes a second
       requestAnimationFrame(loop);
     }
-  }
-
-  /* ---------------- Founding partners ---------------- */
-  const fwrap = $('#founders');
-  if (fwrap) {
-    fwrap.innerHTML = FOUNDERS.map((f, i) => `
-      <div class="founder${f.bio ? ' has-bio' : ''}" data-f="${i}" data-reveal data-dir="scale" data-delay="${i * .07}">
-        <div class="f-av">${initials(f.name) || String(i + 1).padStart(2, '0')}</div>
-        <div>
-          <div class="f-lbl">Founding Partner</div>
-          <h4 class="f-name${f.name ? '' : ' scram'}">${f.name || ''}</h4>
-          ${f.name && (f.year || f.major)
-            ? `<div class="f-sub">${[f.year, f.major].filter(Boolean).join(' \u00b7 ')}</div>` : ''}
-        </div>
-      </div>`).join('');
-
-    $$('.f-name.scram', fwrap).forEach((el, i) => scramble(el, 9 + (i % 3) * 2));
-
-    $$('.founder', fwrap).forEach((el, i) => {
-      new IntersectionObserver((en, ob) => {
-        if (en[0].isIntersecting) { setTimeout(() => el.classList.add('in'), i * 80); ob.disconnect(); }
-      }, { threshold: .2 }).observe(el);
-
-      if (!FOUNDERS[i].bio) return;
-      el.addEventListener('click', () => {
-        const f = FOUNDERS[i];
-        body.innerHTML = `
-          <div class="d-avatar">${initials(f.name) || String(i + 1).padStart(2, '0')}</div>
-          <div class="mono faint" style="font-size:10px;letter-spacing:.2em">FOUNDING PARTNER</div>
-          <h2 style="margin-top:6px">${f.name || 'Name to be published'}</h2>
-          <div class="d-role">${[f.year, f.major].filter(Boolean).join(' \u00b7 ') || 'Founded the group, 2026'}</div>
-          <p class="d-bio">${f.bio}</p>`;
-        drawer.classList.add('open'); scrim.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
   }
 
   /* ---------------- Grid ---------------- */
@@ -315,10 +260,12 @@ const AXES = ['Engineering', 'Analytics', 'Strategy', 'Marketing', 'Client'];
         </div>
         <div class="member-body">
           <div class="role">${m.role}</div>
-          <h3>${title(m)}</h3>
-          <div class="yr">${m.open ? 'Apply now' : (m.name ? `${m.year} · ${m.major}` : 'Seat filled')}</div>
+          <h3${!m.open && !m.name ? ' class="scram"' : ''}>${m.open || m.name ? title(m) : ''}</h3>
+          <div class="yr">${m.open ? 'Apply now' : (m.name ? `${m.year} · ${m.major}` : 'Name to be published')}</div>
         </div>
       </article>`).join('');
+
+    $$('.scram', grid).forEach((el, i) => scramble(el, 9 + (i % 3) * 2));
 
     $$('.member', grid).forEach((el, i) => {
       avatarField(el.querySelector('canvas'), (i + 3) * 7919);
